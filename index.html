@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ProjectInsider — Windows-inspired software projects, experiments, builds and MetroStore.">
-    <title>ProjectInsider</title>
+    <meta name="description" content="MetroStore — a Windows 8 inspired app store project.">
+    <meta name="theme-color" content="#0078d7">
+    <title>MetroStore</title>
+    <link rel="icon" type="image/svg+xml" href="assets/metrostore-logo.svg">
 
     <style>
         :root {
             --blue: #0078d7;
             --blue-dark: #005a9e;
-            --blue-light: #eaf5ff;
-            --red: #d71920;
-            --red-dark: #a91218;
             --text: #111111;
-            --muted: #5f6368;
-            --line: #e4e7eb;
-            --panel: #ffffff;
-            --page: #f4f6f8;
-            --dark: #101214;
+            --muted: #626262;
+            --line: #dddddd;
+            --page: #f4f4f4;
+            --white: #ffffff;
         }
 
         * {
@@ -32,74 +30,63 @@
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            background: var(--page);
             color: var(--text);
+            background: var(--page);
+        }
+
+        img {
+            max-width: 100%;
         }
 
         a {
             color: inherit;
         }
 
-        button,
-        a.button {
-            font-family: inherit;
-        }
-
-        /* =====================================================
-           TOP NAVIGATION
-        ===================================================== */
-
+        /* HEADER */
         .topbar {
             position: sticky;
             top: 0;
             z-index: 1000;
-            height: 66px;
+            min-height: 74px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 7vw;
-            background: rgba(255, 255, 255, 0.97);
-            border-bottom: 1px solid var(--line);
-            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,.97);
+            border-bottom: 1px solid #e7e7e7;
+            backdrop-filter: blur(10px);
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
         }
 
-        .brand-mark {
-            display: grid;
-            grid-template-columns: repeat(2, 10px);
-            grid-template-rows: repeat(2, 10px);
-            gap: 3px;
-            width: 23px;
-            height: 23px;
-        }
-
-        .brand-mark span {
-            background: var(--blue);
+        .site-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            display: block;
         }
 
         .brand-name {
-            font-size: 23px;
+            font-size: 29px;
             font-weight: 300;
-            letter-spacing: 0.2px;
+            letter-spacing: -.4px;
         }
 
         .nav {
             display: flex;
-            align-items: center;
-            gap: 28px;
+            gap: 30px;
         }
 
         .nav a {
+            padding: 26px 0 22px;
+            color: #222;
             text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            padding: 23px 0 20px;
+            font-size: 15px;
             border-bottom: 3px solid transparent;
         }
 
@@ -108,111 +95,68 @@
             border-bottom-color: var(--blue);
         }
 
-        /* =====================================================
-           HERO
-        ===================================================== */
-
+        /* HERO */
         .hero {
-            position: relative;
-            overflow: hidden;
-            min-height: 610px;
+            min-height: 650px;
             display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
             gap: 60px;
-            padding: 90px 8vw;
-            background:
-                linear-gradient(135deg, rgba(0,120,215,0.97), rgba(0,77,142,0.96));
+            align-items: center;
+            padding: 88px 7vw;
             color: white;
-        }
-
-        .hero::before,
-        .hero::after {
-            content: "";
-            position: absolute;
-            pointer-events: none;
-        }
-
-        .hero::before {
-            width: 500px;
-            height: 500px;
-            right: -160px;
-            top: -180px;
-            border: 1px solid rgba(255,255,255,0.17);
-            transform: rotate(45deg);
-        }
-
-        .hero::after {
-            width: 320px;
-            height: 320px;
-            right: 160px;
-            bottom: -170px;
-            border: 1px solid rgba(255,255,255,0.13);
-            transform: rotate(45deg);
-        }
-
-        .hero-copy,
-        .hero-preview {
-            position: relative;
-            z-index: 1;
+            background: linear-gradient(120deg, #0078d7 0%, #005a9e 100%);
         }
 
         .eyebrow {
-            display: inline-block;
             margin-bottom: 18px;
             font-size: 13px;
+            font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            opacity: 0.82;
+            color: rgba(255,255,255,.8);
         }
 
         .hero h1 {
             margin: 0 0 22px;
-            font-size: clamp(52px, 7vw, 82px);
-            line-height: 0.98;
+            font-size: clamp(64px, 8vw, 104px);
+            line-height: .92;
             font-weight: 200;
-            letter-spacing: -2px;
-        }
-
-        .hero h1 strong {
-            font-weight: 500;
+            letter-spacing: -3px;
         }
 
         .hero p {
-            max-width: 700px;
-            margin: 0;
-            font-size: 20px;
+            max-width: 730px;
+            margin: 0 0 18px;
+            font-size: 21px;
+            line-height: 1.7;
             font-weight: 300;
-            line-height: 1.65;
-            color: rgba(255,255,255,0.92);
+            color: rgba(255,255,255,.94);
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 34px;
+            gap: 13px;
+            margin-top: 32px;
         }
 
         .button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 46px;
+            min-height: 48px;
             padding: 0 24px;
-            border: 2px solid transparent;
+            border: 2px solid white;
             border-radius: 0;
+            text-decoration: none;
             font-size: 15px;
             font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: 0.16s ease;
+            transition: .15s ease;
         }
 
         .button-white {
             background: white;
             color: #111;
-            border-color: white;
         }
 
         .button-white:hover {
@@ -221,876 +165,407 @@
             border-color: #111;
         }
 
-        .button-outline-white {
+        .button-outline {
             background: transparent;
             color: white;
-            border-color: rgba(255,255,255,0.85);
         }
 
-        .button-outline-white:hover {
+        .button-outline:hover {
             background: white;
             color: #111;
         }
 
-        .button-blue {
-            background: var(--blue);
-            color: white;
-            border-color: var(--blue);
+        .hero-image {
+            padding: 14px;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.28);
+            box-shadow: 0 28px 80px rgba(0,0,0,.24);
         }
 
-        .button-blue:hover {
-            background: var(--blue-dark);
-            border-color: var(--blue-dark);
+        .hero-image img {
+            display: block;
+            width: 100%;
         }
 
-        .button-red {
-            background: var(--red);
-            color: white;
-            border-color: var(--red);
-        }
-
-        .button-red:hover {
-            background: var(--red-dark);
-            border-color: var(--red-dark);
-        }
-
-        .hero-preview {
-            min-height: 360px;
-            background: rgba(9, 34, 60, 0.42);
-            border: 1px solid rgba(255,255,255,0.27);
-            box-shadow: 0 24px 70px rgba(0,0,0,0.28);
-            padding: 18px;
-        }
-
-        .fake-window {
-            height: 100%;
-            min-height: 325px;
-            background: #0d3156;
-            border: 1px solid rgba(255,255,255,0.16);
-            display: grid;
-            grid-template-columns: 150px 1fr;
-        }
-
-        .fake-sidebar {
-            padding: 24px 16px;
-            background: rgba(0,0,0,0.25);
-        }
-
-        .fake-sidebar .mini-title {
-            font-size: 19px;
-            font-weight: 300;
-            margin-bottom: 28px;
-        }
-
-        .fake-sidebar div:not(.mini-title) {
-            margin: 13px 0;
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .fake-content {
-            padding: 28px;
-        }
-
-        .fake-content h3 {
-            margin: 0 0 8px;
-            font-weight: 300;
-            font-size: 28px;
-        }
-
-        .fake-content p {
-            font-size: 13px;
-            line-height: 1.5;
-            opacity: 0.78;
-        }
-
-        .fake-tiles {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 24px;
-        }
-
-        .fake-tile {
-            min-height: 90px;
-            padding: 12px;
-            background: #0078d7;
-            display: flex;
-            align-items: flex-end;
-            font-size: 12px;
-        }
-
-        .fake-tile:nth-child(2) { background: #2d89ef; }
-        .fake-tile:nth-child(3) { background: #00a4ef; }
-        .fake-tile:nth-child(4) { background: #107c10; }
-        .fake-tile:nth-child(5) { background: #744da9; }
-        .fake-tile:nth-child(6) { background: #008272; }
-
-        /* =====================================================
-           SHARED SECTION STYLES
-        ===================================================== */
-
+        /* CONTENT */
         .section {
-            padding: 88px 8vw;
+            padding: 92px 7vw;
         }
 
-        .section-white {
-            background: white;
-        }
-
-        .section-dark {
-            background: var(--dark);
-            color: white;
-        }
-
-        .section-header {
-            max-width: 850px;
-            margin-bottom: 42px;
+        .section-inner {
+            max-width: 1380px;
+            margin: 0 auto;
         }
 
         .section-kicker {
+            margin-bottom: 10px;
             color: var(--blue);
             font-size: 12px;
             font-weight: 700;
-            letter-spacing: 2.7px;
+            letter-spacing: 2.8px;
             text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .section-dark .section-kicker {
-            color: #57b6ff;
         }
 
         .section-title {
-            margin: 0 0 15px;
-            font-size: clamp(36px, 5vw, 52px);
+            margin: 0 0 18px;
+            max-width: 920px;
+            font-size: clamp(40px, 5vw, 60px);
             font-weight: 300;
-            letter-spacing: -1px;
+            line-height: 1.05;
+            letter-spacing: -1.4px;
         }
 
         .section-text {
+            max-width: 930px;
             margin: 0;
             color: var(--muted);
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .section-dark .section-text {
-            color: #c7ccd2;
-        }
-
-        /* =====================================================
-           PROJECTS
-        ===================================================== */
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .project-card {
-            background: white;
-            border: 1px solid var(--line);
-            padding: 34px;
-            min-height: 255px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: #c7dcef;
-            box-shadow: 0 18px 45px rgba(16, 42, 67, 0.10);
-        }
-
-        .project-number {
-            color: var(--blue);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-
-        .project-card h3 {
-            margin: 0 0 12px;
-            font-size: 28px;
-            font-weight: 400;
-        }
-
-        .project-card p {
-            margin: 0;
-            color: #5c646b;
-            line-height: 1.65;
-        }
-
-        .project-link {
-            margin-top: 28px;
-            color: var(--blue);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* =====================================================
-           METROSTORE FEATURE
-        ===================================================== */
-
-        .metrostore-section {
-            position: relative;
-            overflow: hidden;
-            background: white;
-        }
-
-        .metrostore-wrap {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .metrostore-badge {
-            display: inline-block;
-            margin-bottom: 18px;
-            padding: 8px 13px;
-            background: var(--red);
-            color: white;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1.6px;
-            text-transform: uppercase;
-        }
-
-        .metrostore-copy h2 {
-            margin: 0 0 18px;
-            font-size: clamp(45px, 6vw, 70px);
-            font-weight: 300;
-            letter-spacing: -1.7px;
-        }
-
-        .metrostore-copy p {
-            margin: 0 0 26px;
-            color: var(--muted);
+            font-size: 19px;
             line-height: 1.75;
-            font-size: 18px;
         }
-
-        .metrostore-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .metrostore-preview {
-            background: linear-gradient(145deg, #09284a, #0d4c83);
-            box-shadow: 0 25px 70px rgba(0, 64, 128, 0.20);
-            padding: 20px;
-            min-height: 420px;
-        }
-
-        .store-shell {
-            min-height: 380px;
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            color: white;
-            background: #0a355c;
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-
-        .store-nav {
-            background: rgba(0,0,0,.20);
-            padding: 24px 16px;
-        }
-
-        .store-title {
-            font-size: 20px;
-            font-weight: 300;
-            margin-bottom: 25px;
-        }
-
-        .store-nav-item {
-            padding: 11px 9px;
-            margin: 4px 0;
-            font-size: 13px;
-        }
-
-        .store-nav-item.active {
-            background: var(--blue);
-        }
-
-        .store-main {
-            padding: 26px;
-        }
-
-        .store-search {
-            height: 38px;
-            border: 1px solid rgba(255,255,255,.35);
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            color: rgba(255,255,255,.7);
-            font-size: 12px;
-            margin-bottom: 24px;
-        }
-
-        .store-hero {
-            padding: 24px;
-            background: linear-gradient(115deg, #0b76cc, #37a8ef);
-            min-height: 130px;
-        }
-
-        .store-hero h4 {
-            margin: 0 0 8px;
-            font-size: 29px;
-            font-weight: 300;
-        }
-
-        .store-apps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 16px;
-        }
-
-        .store-app {
-            aspect-ratio: 1 / 1;
-            background: #0078d7;
-            padding: 10px;
-            display: flex;
-            align-items: flex-end;
-            font-size: 11px;
-        }
-
-        .store-app:nth-child(2) { background: #6b52ae; }
-        .store-app:nth-child(3) { background: #00a372; }
-        .store-app:nth-child(4) { background: #2d89ef; }
-
-        /* =====================================================
-           ABOUT CREATOR
-        ===================================================== */
 
         .about-grid {
             display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 70px;
-            align-items: start;
-        }
-
-        .about-big {
-            font-size: clamp(40px, 6vw, 66px);
-            font-weight: 200;
-            line-height: 1.06;
-            margin: 0;
-        }
-
-        .about-copy p {
-            margin: 0 0 20px;
-            font-size: 18px;
-            line-height: 1.8;
-            color: #d2d6da;
-        }
-
-        .about-values {
-            display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: #363a3e;
-            margin-top: 34px;
+            gap: 18px;
+            margin-top: 46px;
         }
 
-        .about-value {
-            background: #191c1f;
-            padding: 20px;
-        }
-
-        .about-value strong {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
-
-        .about-value span {
-            color: #aeb5bc;
-            font-size: 13px;
-        }
-
-        /* =====================================================
-           DOWNLOADS
-        ===================================================== */
-
-        .download-panel {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 30px;
-            align-items: center;
-            padding: 38px;
-            border-left: 5px solid var(--red);
+        .about-card {
+            min-height: 220px;
+            padding: 30px;
             background: white;
-            border-top: 1px solid var(--line);
-            border-right: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
+            border-top: 5px solid var(--blue);
+            box-shadow: 0 10px 32px rgba(0,0,0,.055);
         }
 
-        .download-panel h3 {
-            margin: 0 0 8px;
-            font-size: 30px;
+        .about-card h3 {
+            margin: 0 0 12px;
+            font-size: 25px;
             font-weight: 400;
         }
 
-        .download-panel p {
+        .about-card p {
             margin: 0;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .coming-inline {
-            color: var(--red);
-            font-weight: 700;
-        }
-
-        /* =====================================================
-           MODAL
-        ===================================================== */
-
-        .modal {
-            position: fixed;
-            inset: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            z-index: 2000;
-            background: rgba(0,0,0,.65);
-        }
-
-        .modal.open {
-            display: flex;
-        }
-
-        .modal-card {
-            width: min(720px, 100%);
-            background: white;
-            padding: 36px;
-            box-shadow: 0 30px 90px rgba(0,0,0,.38);
-        }
-
-        .modal-card h3 {
-            margin: 0 0 14px;
-            font-size: 38px;
-            font-weight: 300;
-        }
-
-        .modal-card p {
-            color: #555;
+            color: #606060;
+            font-size: 16px;
             line-height: 1.7;
         }
 
-        .modal-close {
-            margin-top: 22px;
+        /* SCREENSHOTS */
+        .screenshots-section {
+            background: white;
         }
 
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-            background: #080a0b;
-            color: #8c949c;
-            padding: 34px 8vw;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        .gallery {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
             gap: 20px;
-            font-size: 13px;
+            margin-top: 42px;
         }
 
-        footer a {
-            color: #c9d0d6;
-            text-decoration: none;
+        .shot,
+        .side-shots figure {
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            background: #ededed;
+            border: 1px solid var(--line);
+            cursor: zoom-in;
         }
 
-        footer a:hover {
+        .shot img,
+        .side-shots img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform .18s ease;
+        }
+
+        .shot:hover img,
+        .side-shots figure:hover img {
+            transform: scale(1.012);
+        }
+
+        .shot {
+            min-height: 540px;
+        }
+
+        .side-shots {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .gallery-note {
+            margin-top: 17px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* IMAGE VIEWER */
+        .viewer {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: rgba(0,0,0,.92);
+        }
+
+        .viewer.open {
+            display: flex;
+        }
+
+        .viewer img {
+            max-width: 96vw;
+            max-height: 90vh;
+            object-fit: contain;
+            box-shadow: 0 25px 80px rgba(0,0,0,.55);
+        }
+
+        .viewer-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border: 2px solid white;
+            background: transparent;
             color: white;
+            font: inherit;
+            font-size: 29px;
+            cursor: pointer;
         }
 
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
+        /* FOOTER */
+        footer {
+            padding: 34px 7vw;
+            color: #bdbdbd;
+            background: #111;
+        }
 
-        @media (max-width: 960px) {
-            .hero,
-            .metrostore-wrap,
+        .footer-inner {
+            max-width: 1380px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1050px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
             }
 
-            .project-grid {
+            .gallery {
                 grid-template-columns: 1fr;
             }
 
-            .hero-preview {
-                margin-top: 15px;
+            .side-shots {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
             }
 
-            .download-panel {
-                grid-template-columns: 1fr;
+            .shot {
+                min-height: auto;
             }
         }
 
         @media (max-width: 700px) {
             .topbar {
-                padding: 0 22px;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+                padding: 14px 20px 10px;
             }
 
             .nav {
-                display: none;
+                gap: 18px;
             }
 
-            .hero,
-            .section {
-                padding-left: 24px;
-                padding-right: 24px;
+            .nav a {
+                padding: 0 0 8px;
             }
 
             .hero {
-                min-height: auto;
-                padding-top: 70px;
-                padding-bottom: 70px;
+                padding: 64px 20px;
             }
 
-            .hero h1 {
-                font-size: 52px;
+            .section {
+                padding: 70px 20px;
             }
 
-            .fake-window,
-            .store-shell {
+            .side-shots {
                 grid-template-columns: 1fr;
             }
 
-            .fake-sidebar,
-            .store-nav {
-                display: none;
-            }
-
-            .fake-tiles {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .store-apps {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .about-values {
-                grid-template-columns: 1fr;
+            .site-logo {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
 </head>
-
 <body>
 
     <header class="topbar">
-        <a class="brand" href="#home" aria-label="ProjectInsider home">
-            <span class="brand-mark" aria-hidden="true">
-                <span></span><span></span><span></span><span></span>
-            </span>
-            <span class="brand-name">ProjectInsider</span>
+        <a class="brand" href="#home">
+            <img class="site-logo" src="assets/metrostore-logo.svg" alt="MetroStore logo">
+            <span class="brand-name">MetroStore</span>
         </a>
 
         <nav class="nav">
             <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#metrostore">MetroStore</a>
             <a href="#about">About</a>
-            <a href="#downloads">Downloads</a>
+            <a href="#screenshots">Screenshots</a>
         </nav>
     </header>
 
     <main>
-
-        <!-- HERO -->
         <section class="hero" id="home">
-            <div class="hero-copy">
-                <span class="eyebrow">Windows projects · experiments · ideas</span>
-                <h1>Building the <strong>Windows experiences</strong> I want to see.</h1>
+            <div>
+                <div class="eyebrow">Windows 8 inspired app store</div>
+                <h1>MetroStore</h1>
+
                 <p>
-                    ProjectInsider is the home of my Windows-inspired projects, software experiments,
-                    interface recreations and ideas. I build things because I enjoy exploring how
-                    Windows looked, felt and evolved — and because old ideas can still inspire new ones.
+                    MetroStore is a community-made app store inspired by the original Windows 8 Store.
+                    It brings back the clean Metro experience with large featured areas, flat tiles,
+                    Segoe UI typography and a growing collection of archived Windows apps.
+                </p>
+
+                <p>
+                    The goal is simple: make discovering classic Windows apps feel like using a real
+                    Microsoft Store from the Metro era again.
                 </p>
 
                 <div class="hero-actions">
-                    <a class="button button-white" href="#projects">Explore my projects</a>
-                    <a class="button button-outline-white" href="#metrostore">Discover MetroStore</a>
+                    <a class="button button-white" href="#about">About MetroStore</a>
+                    <a class="button button-outline" href="#screenshots">View Screenshots</a>
                 </div>
             </div>
 
-            <div class="hero-preview" aria-label="ProjectInsider interface concept preview">
-                <div class="fake-window">
-                    <div class="fake-sidebar">
-                        <div class="mini-title">ProjectInsider</div>
-                        <div>Home</div>
-                        <div>Builds</div>
-                        <div>Projects</div>
-                        <div>Downloads</div>
-                        <div>Archive</div>
-                    </div>
-                    <div class="fake-content">
-                        <h3>Built from curiosity.</h3>
-                        <p>Retro Windows ideas, experimental software and modern recreations.</p>
-                        <div class="fake-tiles">
-                            <div class="fake-tile">MetroStore</div>
-                            <div class="fake-tile">BettaOS</div>
-                            <div class="fake-tile">Builds</div>
-                            <div class="fake-tile">Tools</div>
-                            <div class="fake-tile">UI Experiments</div>
-                            <div class="fake-tile">More</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-image">
+                <img src="assets/screenshot-store-1.svg" alt="MetroStore Store home page">
             </div>
         </section>
 
-        <!-- PROJECTS -->
-        <section class="section" id="projects">
-            <div class="section-header">
-                <div class="section-kicker">My work</div>
-                <h2 class="section-title">Projects I am building</h2>
+        <section class="section" id="about">
+            <div class="section-inner">
+                <div class="section-kicker">About MetroStore</div>
+                <h2 class="section-title">The Windows 8 Store experience, brought back to life.</h2>
+
                 <p class="section-text">
-                    These projects mix software development, Windows history, interface design and experimentation.
-                    Some are recreations, some are tools, and some are completely original ideas inspired by the
-                    Windows era I enjoy most.
+                    MetroStore is designed around the visual language of the Windows 8 Store: strong
+                    typography, open white space, colorful content tiles and horizontal discovery.
+                    Instead of feeling like a simple archive folder, the project presents apps through
+                    a real storefront with Featured and Spotlight areas, categories and a large app library.
                 </p>
-            </div>
 
-            <div class="project-grid">
-                <article class="project-card">
-                    <div>
-                        <div class="project-number">PROJECT 01</div>
-                        <h3>MetroStore</h3>
+                <div class="about-grid">
+                    <article class="about-card">
+                        <h3>Metro design</h3>
                         <p>
-                            A community-made app store inspired by the Windows 8 Store experience,
-                            redesigned to make discovering and installing apps feel native to the Metro era.
+                            Flat layouts, square corners, Segoe UI and large content areas recreate the
+                            look and feeling of Microsoft's Windows 8 era.
                         </p>
-                    </div>
-                    <a class="project-link" href="#metrostore">See MetroStore →</a>
-                </article>
+                    </article>
 
-                <article class="project-card">
-                    <div>
-                        <div class="project-number">PROJECT 02</div>
-                        <h3>BettaOS</h3>
+                    <article class="about-card">
+                        <h3>App discovery</h3>
                         <p>
-                            An experimental operating system project where I explore booting, low-level code,
-                            classic desktop ideas and my own interface concepts.
+                            Featured content, Spotlight sections and categories give users a visual way
+                            to discover apps instead of browsing a plain list of files.
                         </p>
-                    </div>
-                    <span class="project-link">Experimental project</span>
-                </article>
+                    </article>
 
-                <article class="project-card">
-                    <div>
-                        <div class="project-number">PROJECT 03</div>
-                        <h3>BetaStore Legacy</h3>
+                    <article class="about-card">
+                        <h3>Archive focused</h3>
                         <p>
-                            A Store Beta-inspired project built around the early Windows 10 design language,
-                            with a focus on the feel of the Technical Preview era.
+                            MetroStore gives archived Windows app packages a proper storefront-style home,
+                            helping classic Metro apps feel alive and discoverable again.
                         </p>
-                    </div>
-                    <span class="project-link">Windows-inspired UI project</span>
-                </article>
-
-                <article class="project-card">
-                    <div>
-                        <div class="project-number">PROJECT 04</div>
-                        <h3>Welcome to Insider Preview</h3>
-                        <p>
-                            A Windows utility that detects a system build and presents information in a visual style
-                            inspired by Windows 10 Insider Preview and Technical Preview builds.
-                        </p>
-                    </div>
-                    <span class="project-link">Utility project</span>
-                </article>
-            </div>
-        </section>
-
-        <!-- METROSTORE -->
-        <section class="section metrostore-section" id="metrostore">
-            <div class="metrostore-wrap">
-                <div class="metrostore-copy">
-                    <span class="metrostore-badge">Coming Soon</span>
-                    <h2>MetroStore</h2>
-                    <p>
-                        MetroStore is one of my main projects: an app discovery experience inspired by the Windows 8
-                        Store, with categories, featured apps and a design made to feel at home on Metro-era Windows.
-                    </p>
-                    <p>
-                        A public download is not available yet. When the first public version is ready,
-                        this page will become the main place to get it.
-                    </p>
-
-                    <div class="metrostore-actions">
-                        <button class="button button-red" type="button" onclick="showComingSoon()">
-                            Download MetroStore — Coming Soon
-                        </button>
-                        <button class="button button-blue" type="button" onclick="openMetroModal()">
-                            See More
-                        </button>
-                    </div>
-                </div>
-
-                <div class="metrostore-preview" aria-label="MetroStore concept interface">
-                    <div class="store-shell">
-                        <aside class="store-nav">
-                            <div class="store-title">MetroStore</div>
-                            <div class="store-nav-item active">Home</div>
-                            <div class="store-nav-item">Apps</div>
-                            <div class="store-nav-item">Games</div>
-                            <div class="store-nav-item">Entertainment</div>
-                            <div class="store-nav-item">Productivity</div>
-                        </aside>
-
-                        <div class="store-main">
-                            <div class="store-search">Search apps, games and more...</div>
-                            <div class="store-hero">
-                                <h4>Discover something new.</h4>
-                                <div>Featured apps, selected for the Metro experience.</div>
-                            </div>
-                            <div class="store-apps">
-                                <div class="store-app">Featured App</div>
-                                <div class="store-app">Creative</div>
-                                <div class="store-app">Productivity</div>
-                                <div class="store-app">More Apps</div>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- ABOUT -->
-        <section class="section section-dark" id="about">
-            <div class="about-grid">
-                <div>
-                    <div class="section-kicker">About the creator</div>
-                    <h2 class="about-big">I build projects around the Windows experiences that inspire me.</h2>
-                </div>
+        <section class="section screenshots-section" id="screenshots">
+            <div class="section-inner">
+                <div class="section-kicker">Screenshots</div>
+                <h2 class="section-title">See MetroStore in action.</h2>
 
-                <div class="about-copy">
-                    <p>
-                        I am an independent Windows enthusiast and developer who enjoys experimenting with software,
-                        interface design and operating systems. ProjectInsider is where I bring those experiments together.
-                    </p>
-                    <p>
-                        A lot of my work is inspired by the Windows 8 and early Windows 10 eras: Metro design,
-                        Technical Preview builds, flat interfaces, live tiles, classic Microsoft ideas and the feeling
-                        of software being actively explored and changed.
-                    </p>
-                    <p>
-                        I use these projects to learn, test ideas and build things I would genuinely like to use.
-                        ProjectInsider is not affiliated with Microsoft.
-                    </p>
-
-                    <div class="about-values">
-                        <div class="about-value">
-                            <strong>Experiment</strong>
-                            <span>Try ideas instead of leaving them as concepts.</span>
-                        </div>
-                        <div class="about-value">
-                            <strong>Preserve</strong>
-                            <span>Keep interesting UI ideas and Windows eras alive.</span>
-                        </div>
-                        <div class="about-value">
-                            <strong>Build</strong>
-                            <span>Turn inspiration into real software projects.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DOWNLOADS -->
-        <section class="section section-white" id="downloads">
-            <div class="section-header">
-                <div class="section-kicker">Downloads</div>
-                <h2 class="section-title">Project downloads</h2>
                 <p class="section-text">
-                    Public builds and downloads will appear here as projects become ready for release.
+                    These are real screenshots from MetroStore, showing the All Apps library and two
+                    variations of the Store home page with Featured and Spotlight content.
                 </p>
-            </div>
 
-            <div class="download-panel">
-                <div>
-                    <h3>MetroStore</h3>
-                    <p>
-                        Public release status: <span class="coming-inline">COMING SOON</span>.<br>
-                        The download button will be enabled when the first public build is available.
-                    </p>
+                <div class="gallery">
+                    <figure class="shot" onclick="openViewer('assets/screenshot-all-apps.svg')">
+                        <img src="assets/screenshot-all-apps.svg" alt="MetroStore All Apps page">
+                    </figure>
+
+                    <div class="side-shots">
+                        <figure onclick="openViewer('assets/screenshot-store-1.svg')">
+                            <img src="assets/screenshot-store-1.svg" alt="MetroStore home page screenshot 1">
+                        </figure>
+
+                        <figure onclick="openViewer('assets/screenshot-store-2.svg')">
+                            <img src="assets/screenshot-store-2.svg" alt="MetroStore home page screenshot 2">
+                        </figure>
+                    </div>
                 </div>
 
-                <button class="button button-red" type="button" onclick="showComingSoon()">
-                    Download — Coming Soon
-                </button>
+                <div class="gallery-note">Click a screenshot to open it in a larger viewer.</div>
             </div>
         </section>
-
     </main>
 
     <footer>
-        <div>© 2026 ProjectInsider</div>
-        <div>
-            Independent project · Not affiliated with Microsoft ·
-            <a href="https://github.com/ProjectInsider">GitHub</a>
+        <div class="footer-inner">
+            <div>© 2026 MetroStore</div>
+            <div>Community-made Windows 8 inspired app store project.</div>
         </div>
     </footer>
 
-    <!-- METROSTORE DETAILS MODAL -->
-    <div class="modal" id="metroModal" aria-hidden="true">
-        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="metroModalTitle">
-            <h3 id="metroModalTitle">About MetroStore</h3>
-            <p>
-                MetroStore is designed as a modern community project with the visual identity of the Windows 8 Store.
-                The goal is to make app discovery simple, visual and familiar, with featured content, categories and
-                an experience that feels native to Metro-style Windows devices.
-            </p>
-            <p>
-                Development is still in progress, so the public download is marked as Coming Soon.
-                More information, screenshots and release details can be added here as the project evolves.
-            </p>
-            <button class="button button-blue modal-close" type="button" onclick="closeMetroModal()">Close</button>
-        </div>
+    <div class="viewer" id="viewer" onclick="closeViewer(event)">
+        <button class="viewer-close" type="button" onclick="closeViewer(event)" aria-label="Close">×</button>
+        <img id="viewer-image" src="" alt="MetroStore screenshot enlarged">
     </div>
 
     <script>
-        function showComingSoon() {
-            alert("MetroStore is coming soon! The public download will appear here when it is ready.");
+        const viewer = document.getElementById('viewer');
+        const viewerImage = document.getElementById('viewer-image');
+
+        function openViewer(src) {
+            viewerImage.src = src;
+            viewer.classList.add('open');
+            document.body.style.overflow = 'hidden';
         }
 
-        function openMetroModal() {
-            const modal = document.getElementById("metroModal");
-            modal.classList.add("open");
-            modal.setAttribute("aria-hidden", "false");
-        }
-
-        function closeMetroModal() {
-            const modal = document.getElementById("metroModal");
-            modal.classList.remove("open");
-            modal.setAttribute("aria-hidden", "true");
-        }
-
-        document.getElementById("metroModal").addEventListener("click", function (event) {
-            if (event.target === this) {
-                closeMetroModal();
+        function closeViewer(event) {
+            if (event.target === viewer || event.target.classList.contains('viewer-close')) {
+                viewer.classList.remove('open');
+                viewerImage.src = '';
+                document.body.style.overflow = '';
             }
-        });
+        }
 
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape") {
-                closeMetroModal();
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && viewer.classList.contains('open')) {
+                viewer.classList.remove('open');
+                viewerImage.src = '';
+                document.body.style.overflow = '';
             }
         });
     </script>
-
 </body>
 </html>

@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ProjectInsider</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f2f2f2;
+            color: #111;
+        }
+
+        /* =========================
+           TOP BAR
+        ========================= */
+
+        .topbar {
+            height: 64px;
+            background: #0078D7;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 21px 4px;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav a:hover {
+            border-bottom-color: white;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 540px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 80, 150, 0.72),
+                    rgba(0, 60, 120, 0.78)
+                ),
+                url("images/hero.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero h1 {
+            font-size: 68px;
+            font-weight: 200;
+            margin: 0 0 20px 0;
+        }
+
+        .hero p {
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 650px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+
+            background: white;
+            color: #111;
+
+            padding: 13px 26px;
+
+            border: 2px solid white;
+
+            text-decoration: none;
+            font-size: 16px;
+
+            transition: 0.15s;
+        }
+
+        .button:hover {
+            background: black;
+            border-color: black;
+            color: white;
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: white;
+        }
+
+        .button-secondary:hover {
+            background: white;
+            color: black;
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #555;
+            max-width: 750px;
+            line-height: 1.6;
+            margin-bottom: 45px;
+        }
+
+        /* =========================
+           FEATURE TILES
+        ========================= */
+
+        .tiles {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 18px;
+        }
+
+        .tile {
+            background: white;
+            min-height: 230px;
+
+            padding: 30px;
+
+            border-top: 5px solid #0078D7;
+
+            transition:
+                transform 0.15s,
+                box-shadow 0.15s;
+        }
+
+        .tile:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .tile h3 {
+            font-size: 25px;
+            font-weight: 400;
+            margin-top: 0;
+        }
+
+        .tile p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .tile a {
+            color: #0078D7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .tile a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           BUILD SECTION
+        ========================= */
+
+        .build-section {
+            background: white;
+        }
+
+        .build-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(270px, 1fr));
+
+            gap: 20px;
+        }
+
+        .build-card {
+            background: #f5f5f5;
+
+            padding: 25px;
+
+            border-left: 5px solid #0078D7;
+        }
+
+        .build-number {
+            color: #0078D7;
+
+            font-size: 34px;
+            font-weight: 300;
+        }
+
+        .build-card h3 {
+            margin: 8px 0;
+            font-weight: 400;
+        }
+
+        .build-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .build-tag {
+            display: inline-block;
+
+            background: #0078D7;
+            color: white;
+
+            font-size: 12px;
+
+            padding: 5px 10px;
+
+            margin-top: 10px;
+        }
+
+        /* =========================
+           FEATURED BUILD
+        ========================= */
+
+        .featured-build {
+            background: #0078D7;
+            color: white;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .featured-build img {
+            width: 100%;
+            max-width: 700px;
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .featured-build h2 {
+            font-size: 50px;
+            font-weight: 200;
+
+            margin-top: 0;
+        }
+
+        .featured-build p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .project {
+            background: white;
+            padding: 28px;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+        .project:last-child {
+            border-bottom: 0;
+        }
+
+        .project h3 {
+            font-size: 24px;
+            font-weight: 400;
+
+            margin-top: 0;
+        }
+
+        .project p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-section {
+            background: #111;
+            color: white;
+        }
+
+        .about-section .section-subtitle {
+            color: #ccc;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #222;
+            color: #aaa;
+
+            padding: 35px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            gap: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .topbar {
+                padding: 0 20px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 50px 25px;
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 60px 25px;
+            }
+
+            .featured-build {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-build h2 {
+                font-size: 40px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ====================================
+         NAVIGATION
+    ===================================== -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            ProjectInsider
+        </div>
+
+        <nav class="nav">
+            <a href="#home">Home</a>
+            <a href="#builds">Builds</a>
+            <a href="#projects">Projects</a>
+            <a href="#downloads">Downloads</a>
+            <a href="#about">About</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ====================================
+         HERO
+    ===================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Welcome to ProjectInsider
+            </h1>
+
+            <p>
+                Exploring Windows development builds, forgotten
+                Microsoft interfaces, experimental software and
+                community-made projects inspired by the Windows
+                Insider era.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a class="button" href="#builds">
+                    Explore Builds
+                </a>
+
+                <a
+                    class="button button-secondary"
+                    href="#projects">
+
+                    View Projects
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================
+         INTRO
+    ===================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            Discover the Windows Insider era
+        </h2>
+
+        <p class="section-subtitle">
+            ProjectInsider is a community project dedicated to
+            exploring Windows development history, Technical Preview
+            builds, experimental user interfaces and software inspired
+            by Microsoft's most interesting development periods.
+        </p>
+
+
+        <div class="tiles">
+
+            <div class="tile">
+
+                <h3>
+                    Insider Builds
+                </h3>
+
+                <p>
+                    Discover notable Windows Technical Preview builds
+                    and learn what changed between each release.
+                </p>
+
+                <a href="#builds">
+                    Browse builds →
+                </a>
+
+            </div>
+
+
+            <div class="tile">
+
+                <h3>
+                    Software Projects
+                </h3>
+
+                <p>
+                    Explore applications inspired by classic Windows
+                    interfaces and Microsoft's experimental software.
+                </p>
+
+                <a href="#projects">
+                    View projects →
+                </a>
+
+            </div>
+
+
+            <div class="tile">
+
+                <h3>
+                    Downloads
+                </h3>
+
+                <p>
+                    Find ProjectInsider utilities, experimental apps,
+                    wallpapers and other resources.
+                </p>
+
+                <a href="#downloads">
+                    Open downloads →
+                </a>
+
+            </div>
+
+
+            <div class="tile">
+
+                <h3>
+                    Archive
+                </h3>
+
+                <p>
+                    Explore screenshots, concepts and information
+                    documenting different Windows development eras.
+                </p>
+
+                <a href="#">
+                    Open archive →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================
+         FEATURED BUILD
+    ===================================== -->
+
+    <section class="featured-build">
+
+        <div>
+
+            <h2>
+                Featured Build:
+                Windows 10 Build 10074
+            </h2>
+
+            <p>
+                Released during the Windows 10 Insider Preview era,
+                build 10074 introduced one of the most recognizable
+                versions of the early Windows 10 interface.
+            </p>
+
+            <p>
+                It featured an evolving Start menu, Cortana integration,
+                redesigned system sounds, new animations and the
+                experimental interface that would eventually become
+                Windows 10.
+            </p>
+
+            <a class="button" href="#">
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <img
+                src="images/build10074.jpg"
+                alt="Windows 10 Build 10074">
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================
+         BUILDS
+    ===================================== -->
+
+    <section
+        class="build-section"
+        id="builds">
+
+        <h2 class="section-title">
+            Insider Builds
+        </h2>
+
+        <p class="section-subtitle">
+            Explore some important Windows 10 Technical Preview and
+            Insider Preview builds.
+        </p>
+
+
+        <div class="build-list">
+
+            <div class="build-card">
+
+                <div class="build-number">
+                    9841
+                </div>
+
+                <h3>
+                    Technical Preview
+                </h3>
+
+                <p>
+                    One of the earliest publicly available Windows 10
+                    Technical Preview builds.
+                </p>
+
+                <span class="build-tag">
+                    2014
+                </span>
+
+            </div>
+
+
+            <div class="build-card">
+
+                <div class="build-number">
+                    9926
+                </div>
+
+                <h3>
+                    January Preview
+                </h3>
+
+                <p>
+                    Introduced major UI changes and early versions of
+                    features that later became part of Windows 10.
+                </p>
+
+                <span class="build-tag">
+                    2015
+                </span>
+
+            </div>
+
+
+            <div class="build-card">
+
+                <div class="build-number">
+                    10041
+                </div>
+
+                <h3>
+                    Technical Preview
+                </h3>
+
+                <p>
+                    Continued the transformation of the Start menu,
+                    desktop and system interface.
+                </p>
+
+                <span class="build-tag">
+                    2015
+                </span>
+
+            </div>
+
+
+            <div class="build-card">
+
+                <div class="build-number">
+                    10049
+                </div>
+
+                <h3>
+                    Project Spartan
+                </h3>
+
+                <p>
+                    One of the first public builds to include Microsoft's
+                    new browser project, later known as Edge.
+                </p>
+
+                <span class="build-tag">
+                    2015
+                </span>
+
+            </div>
+
+
+            <div class="build-card">
+
+                <div class="build-number">
+                    10061
+                </div>
+
+                <h3>
+                    Preview Build
+                </h3>
+
+                <p>
+                    Introduced additional interface changes and updated
+                    versions of Microsoft's new Windows applications.
+                </p>
+
+                <span class="build-tag">
+                    2015
+                </span>
+
+            </div>
+
+
+            <div class="build-card">
+
+                <div class="build-number">
+                    10074
+                </div>
+
+                <h3>
+                    Insider Preview
+                </h3>
+
+                <p>
+                    One of the most recognizable pre-release Windows 10
+                    builds and a major milestone in the Insider program.
+                </p>
+
+                <span class="build-tag">
+                    FEATURED
+                </span>
+
+            </div>
+
+
+            <div class="build-card">
+
+                <div class="build-number">
+                    10122
+                </div>
+
+                <h3>
+                    Insider Preview
+                </h3>
+
+                <p>
+                    Continued refining the interface as Windows 10 moved
+                    closer to its final release.
+                </p>
+
+                <span class="build-tag">
+                    2015
+                </span>
+
+            </div>
+
+
+            <div class="build-card">
+
+                <div class="build-number">
+                    10130
+                </div>
+
+                <h3>
+                    Insider Preview
+                </h3>
+
+                <p>
+                    One of the later preview builds before Windows 10
+                    reached the final stages of development.
+                </p>
+
+                <span class="build-tag">
+                    2015
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================
+         PROJECTS
+    ===================================== -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            Projects
+        </h2>
+
+        <p class="section-subtitle">
+            Software and experiments created as part of ProjectInsider.
+        </p>
+
+
+        <div class="project">
+
+            <h3>
+                MetroStore
+            </h3>
+
+            <p>
+                A community-made application store inspired by the
+                Windows 8 Store interface, designed to rediscover the
+                Metro experience.
+            </p>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                BettaOS
+            </h3>
+
+            <p>
+                An experimental operating system project exploring
+                classic desktop ideas, Metro design and custom UI
+                concepts.
+            </p>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                BetaStore Legacy
+            </h3>
+
+            <p>
+                A Store Beta-inspired application recreating the visual
+                style of early Windows 10 builds.
+            </p>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                Welcome to Insider Preview
+            </h3>
+
+            <p>
+                A Windows utility designed to detect Windows builds and
+                display information using an interface inspired by
+                Windows 10 Technical Preview.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================
+         DOWNLOADS
+    ===================================== -->
+
+    <section
+        class="build-section"
+        id="downloads">
+
+        <h2 class="section-title">
+            Downloads
+        </h2>
+
+        <p class="section-subtitle">
+            Download applications and resources made by ProjectInsider.
+        </p>
+
+
+        <div class="tiles">
+
+            <div class="tile">
+
+                <h3>
+                    MetroStore
+                </h3>
+
+                <p>
+                    Latest version of the MetroStore application.
+                </p>
+
+                <a href="#">
+                    Download →
+                </a>
+
+            </div>
+
+
+            <div class="tile">
+
+                <h3>
+                    ProjectInsider Tools
+                </h3>
+
+                <p>
+                    Utilities designed for Windows enthusiasts and
+                    Insider Preview experiments.
+                </p>
+
+                <a href="#">
+                    View downloads →
+                </a>
+
+            </div>
+
+
+            <div class="tile">
+
+                <h3>
+                    Wallpapers
+                </h3>
+
+                <p>
+                    Wallpapers inspired by Windows development builds
+                    and Microsoft design.
+                </p>
+
+                <a href="#">
+                    Browse wallpapers →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================
+         ABOUT
+    ===================================== -->
+
+    <section
+        class="about-section"
+        id="about">
+
+        <h2 class="section-title">
+            About ProjectInsider
+        </h2>
+
+        <p class="section-subtitle">
+
+            ProjectInsider is an independent enthusiast project focused
+            on Windows development history, experimental Microsoft
+            interfaces and community-created software.
+
+            <br><br>
+
+            The goal is to preserve the feeling of the Windows Insider
+            era while building new projects inspired by it.
+
+            <br><br>
+
+            ProjectInsider is not affiliated with Microsoft.
+
+        </p>
+
+    </section>
+
+
+    <!-- ====================================
+         FOOTER
+    ===================================== -->
+
+    <footer>
+
+        <div>
+            © 2026 ProjectInsider
+        </div>
+
+        <div>
+            <a href="https://github.com/">
+                GitHub
+            </a>
+
+            &nbsp;&nbsp; | &nbsp;&nbsp;
+
+            <a href="#about">
+                About
+            </a>
+        </div>
+
+    </footer>
+
+</body>
+</html>

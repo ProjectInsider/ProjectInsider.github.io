@@ -12,81 +12,69 @@
         :root {
             --blue: #0078d7;
             --blue-dark: #005a9e;
-            --text: #111111;
-            --muted: #626262;
-            --line: #dddddd;
-            --page: #f4f4f4;
-            --white: #ffffff;
+            --text: #111;
+            --muted: #666;
+            --line: #dedede;
+            --page: #f5f5f5;
+            --white: #fff;
         }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            color: var(--text);
             background: var(--page);
+            color: var(--text);
         }
 
-        img {
-            max-width: 100%;
-        }
+        img { max-width: 100%; }
+        a { color: inherit; }
 
-        a {
-            color: inherit;
-        }
-
-        /* HEADER */
         .topbar {
             position: sticky;
             top: 0;
             z-index: 1000;
-            min-height: 74px;
+            min-height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 7vw;
-            background: rgba(255,255,255,.97);
-            border-bottom: 1px solid #e7e7e7;
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,.98);
+            border-bottom: 1px solid #e5e5e5;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 15px;
             text-decoration: none;
         }
 
         .site-logo {
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             object-fit: contain;
             display: block;
         }
 
         .brand-name {
-            font-size: 29px;
+            font-size: 31px;
             font-weight: 300;
-            letter-spacing: -.4px;
+            letter-spacing: -.5px;
         }
 
         .nav {
             display: flex;
-            gap: 30px;
+            gap: 32px;
         }
 
         .nav a {
-            padding: 26px 0 22px;
+            padding: 28px 0 24px;
             color: #222;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16px;
             border-bottom: 3px solid transparent;
         }
 
@@ -95,48 +83,47 @@
             border-bottom-color: var(--blue);
         }
 
-        /* HERO */
         .hero {
             min-height: 650px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            padding: 88px 7vw;
+            padding: 90px 7vw;
             color: white;
-            background: linear-gradient(120deg, #0078d7 0%, #005a9e 100%);
+            background: linear-gradient(120deg, var(--blue), var(--blue-dark));
         }
 
         .eyebrow {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: rgba(255,255,255,.8);
+            color: rgba(255,255,255,.82);
         }
 
         .hero h1 {
-            margin: 0 0 22px;
-            font-size: clamp(64px, 8vw, 104px);
+            margin: 0 0 24px;
+            font-size: clamp(66px, 8vw, 106px);
             line-height: .92;
             font-weight: 200;
             letter-spacing: -3px;
         }
 
         .hero p {
-            max-width: 730px;
+            max-width: 720px;
             margin: 0 0 18px;
             font-size: 21px;
-            line-height: 1.7;
+            line-height: 1.72;
             font-weight: 300;
-            color: rgba(255,255,255,.94);
+            color: rgba(255,255,255,.95);
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 13px;
+            gap: 14px;
             margin-top: 32px;
         }
 
@@ -144,8 +131,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 48px;
-            padding: 0 24px;
+            min-height: 50px;
+            padding: 0 25px;
             border: 2px solid white;
             border-radius: 0;
             text-decoration: none;
@@ -177,17 +164,17 @@
 
         .hero-image {
             padding: 14px;
-            background: rgba(255,255,255,.12);
-            border: 1px solid rgba(255,255,255,.28);
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.30);
             box-shadow: 0 28px 80px rgba(0,0,0,.24);
         }
 
         .hero-image img {
             display: block;
             width: 100%;
+            height: auto;
         }
 
-        /* CONTENT */
         .section {
             padding: 92px 7vw;
         }
@@ -208,15 +195,15 @@
 
         .section-title {
             margin: 0 0 18px;
-            max-width: 920px;
+            max-width: 950px;
             font-size: clamp(40px, 5vw, 60px);
-            font-weight: 300;
             line-height: 1.05;
+            font-weight: 300;
             letter-spacing: -1.4px;
         }
 
         .section-text {
-            max-width: 930px;
+            max-width: 940px;
             margin: 0;
             color: var(--muted);
             font-size: 19px;
@@ -251,10 +238,7 @@
             line-height: 1.7;
         }
 
-        /* SCREENSHOTS */
-        .screenshots-section {
-            background: white;
-        }
+        .screenshots-section { background: white; }
 
         .gallery {
             display: grid;
@@ -268,7 +252,7 @@
             margin: 0;
             position: relative;
             overflow: hidden;
-            background: #ededed;
+            background: #eee;
             border: 1px solid var(--line);
             cursor: zoom-in;
         }
@@ -283,13 +267,9 @@
         }
 
         .shot:hover img,
-        .side-shots figure:hover img {
-            transform: scale(1.012);
-        }
+        .side-shots figure:hover img { transform: scale(1.012); }
 
-        .shot {
-            min-height: 540px;
-        }
+        .shot { min-height: 500px; }
 
         .side-shots {
             display: grid;
@@ -298,12 +278,11 @@
         }
 
         .gallery-note {
-            margin-top: 17px;
+            margin-top: 18px;
             color: #777;
             font-size: 14px;
         }
 
-        /* IMAGE VIEWER */
         .viewer {
             display: none;
             position: fixed;
@@ -312,12 +291,10 @@
             align-items: center;
             justify-content: center;
             padding: 30px;
-            background: rgba(0,0,0,.92);
+            background: rgba(0,0,0,.93);
         }
 
-        .viewer.open {
-            display: flex;
-        }
+        .viewer.open { display: flex; }
 
         .viewer img {
             max-width: 96vw;
@@ -340,10 +317,9 @@
             cursor: pointer;
         }
 
-        /* FOOTER */
         footer {
             padding: 34px 7vw;
-            color: #bdbdbd;
+            color: #bbb;
             background: #111;
         }
 
@@ -358,26 +334,11 @@
         }
 
         @media (max-width: 1050px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .side-shots {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto;
-            }
-
-            .shot {
-                min-height: auto;
-            }
+            .hero { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; }
+            .gallery { grid-template-columns: 1fr; }
+            .side-shots { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+            .shot { min-height: auto; }
         }
 
         @media (max-width: 700px) {
@@ -388,184 +349,167 @@
                 padding: 14px 20px 10px;
             }
 
-            .nav {
-                gap: 18px;
-            }
-
-            .nav a {
-                padding: 0 0 8px;
-            }
-
-            .hero {
-                padding: 64px 20px;
-            }
-
-            .section {
-                padding: 70px 20px;
-            }
-
-            .side-shots {
-                grid-template-columns: 1fr;
-            }
-
-            .site-logo {
-                width: 40px;
-                height: 40px;
-            }
+            .nav { gap: 18px; }
+            .nav a { padding: 0 0 8px; }
+            .hero { padding: 64px 20px; }
+            .section { padding: 70px 20px; }
+            .side-shots { grid-template-columns: 1fr; }
+            .site-logo { width: 40px; height: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="topbar">
-        <a class="brand" href="#home">
-            <img class="site-logo" src="assets/metrostore-logo.svg" alt="MetroStore logo">
-            <span class="brand-name">MetroStore</span>
-        </a>
+<header class="topbar">
+    <a class="brand" href="#home">
+        <img class="site-logo" src="assets/metrostore-logo.svg" alt="MetroStore logo">
+        <span class="brand-name">MetroStore</span>
+    </a>
 
-        <nav class="nav">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#screenshots">Screenshots</a>
-        </nav>
-    </header>
+    <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#screenshots">Screenshots</a>
+    </nav>
+</header>
 
-    <main>
-        <section class="hero" id="home">
-            <div>
-                <div class="eyebrow">Windows 8 inspired app store</div>
-                <h1>MetroStore</h1>
+<main>
+    <section class="hero" id="home">
+        <div>
+            <div class="eyebrow">Windows 8 inspired app store</div>
+            <h1>MetroStore</h1>
 
-                <p>
-                    MetroStore is a community-made app store inspired by the original Windows 8 Store.
-                    It brings back the clean Metro experience with large featured areas, flat tiles,
-                    Segoe UI typography and a growing collection of archived Windows apps.
-                </p>
+            <p>
+                MetroStore is a community-made app store inspired by the original Windows 8 Store.
+                It brings back the clean Metro experience with large featured areas, flat tiles,
+                Segoe UI typography and a growing collection of archived Windows apps.
+            </p>
 
-                <p>
-                    The goal is simple: make discovering classic Windows apps feel like using a real
-                    Microsoft Store from the Metro era again.
-                </p>
+            <p>
+                The goal is simple: make discovering classic Windows apps feel like using a real
+                Microsoft Store from the Metro era again.
+            </p>
 
-                <div class="hero-actions">
-                    <a class="button button-white" href="#about">About MetroStore</a>
-                    <a class="button button-outline" href="#screenshots">View Screenshots</a>
-                </div>
+            <div class="hero-actions">
+                <a class="button button-white" href="#about">About MetroStore</a>
+                <a class="button button-outline" href="#screenshots">View Screenshots</a>
             </div>
+        </div>
 
-            <div class="hero-image">
-                <img src="assets/screenshot-store-1.svg" alt="MetroStore Store home page">
+        <div class="hero-image">
+            <img src="assets/candidate2.jpg" alt="MetroStore Store home page">
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="section-inner">
+            <div class="section-kicker">About MetroStore</div>
+            <h2 class="section-title">The Windows 8 Store experience, brought back to life.</h2>
+
+            <p class="section-text">
+                MetroStore is designed around the visual language of the Windows 8 Store: strong
+                typography, open white space, colorful content tiles and horizontal discovery.
+                Instead of feeling like a simple archive folder, the project presents apps through
+                a real storefront with Featured and Spotlight areas, categories and a large app library.
+            </p>
+
+            <div class="about-grid">
+                <article class="about-card">
+                    <h3>Metro design</h3>
+                    <p>
+                        Flat layouts, square corners, Segoe UI and large content areas recreate the
+                        look and feeling of Microsoft's Windows 8 era.
+                    </p>
+                </article>
+
+                <article class="about-card">
+                    <h3>App discovery</h3>
+                    <p>
+                        Featured content, Spotlight sections and categories give users a visual way
+                        to discover apps instead of browsing a plain list of files.
+                    </p>
+                </article>
+
+                <article class="about-card">
+                    <h3>Archive focused</h3>
+                    <p>
+                        MetroStore gives archived Windows app packages a proper storefront-style home,
+                        helping classic Metro apps feel alive and discoverable again.
+                    </p>
+                </article>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section" id="about">
-            <div class="section-inner">
-                <div class="section-kicker">About MetroStore</div>
-                <h2 class="section-title">The Windows 8 Store experience, brought back to life.</h2>
+    <section class="section screenshots-section" id="screenshots">
+        <div class="section-inner">
+            <div class="section-kicker">Screenshots</div>
+            <h2 class="section-title">See MetroStore in action.</h2>
 
-                <p class="section-text">
-                    MetroStore is designed around the visual language of the Windows 8 Store: strong
-                    typography, open white space, colorful content tiles and horizontal discovery.
-                    Instead of feeling like a simple archive folder, the project presents apps through
-                    a real storefront with Featured and Spotlight areas, categories and a large app library.
-                </p>
+            <p class="section-text">
+                These screenshots show the real MetroStore interface, including the All Apps library
+                and two versions of the Store home page with Featured and Spotlight content.
+            </p>
 
-                <div class="about-grid">
-                    <article class="about-card">
-                        <h3>Metro design</h3>
-                        <p>
-                            Flat layouts, square corners, Segoe UI and large content areas recreate the
-                            look and feeling of Microsoft's Windows 8 era.
-                        </p>
-                    </article>
+            <div class="gallery">
+                <figure class="shot" onclick="openViewer('assets/candidate1.jpg')">
+                    <img src="assets/candidate1.jpg" alt="MetroStore All Apps page">
+                </figure>
 
-                    <article class="about-card">
-                        <h3>App discovery</h3>
-                        <p>
-                            Featured content, Spotlight sections and categories give users a visual way
-                            to discover apps instead of browsing a plain list of files.
-                        </p>
-                    </article>
-
-                    <article class="about-card">
-                        <h3>Archive focused</h3>
-                        <p>
-                            MetroStore gives archived Windows app packages a proper storefront-style home,
-                            helping classic Metro apps feel alive and discoverable again.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section screenshots-section" id="screenshots">
-            <div class="section-inner">
-                <div class="section-kicker">Screenshots</div>
-                <h2 class="section-title">See MetroStore in action.</h2>
-
-                <p class="section-text">
-                    These are real screenshots from MetroStore, showing the All Apps library and two
-                    variations of the Store home page with Featured and Spotlight content.
-                </p>
-
-                <div class="gallery">
-                    <figure class="shot" onclick="openViewer('assets/screenshot-all-apps.svg')">
-                        <img src="assets/screenshot-all-apps.svg" alt="MetroStore All Apps page">
+                <div class="side-shots">
+                    <figure onclick="openViewer('assets/candidate2.jpg')">
+                        <img src="assets/candidate2.jpg" alt="MetroStore home page screenshot 1">
                     </figure>
 
-                    <div class="side-shots">
-                        <figure onclick="openViewer('assets/screenshot-store-1.svg')">
-                            <img src="assets/screenshot-store-1.svg" alt="MetroStore home page screenshot 1">
-                        </figure>
-
-                        <figure onclick="openViewer('assets/screenshot-store-2.svg')">
-                            <img src="assets/screenshot-store-2.svg" alt="MetroStore home page screenshot 2">
-                        </figure>
-                    </div>
+                    <figure onclick="openViewer('assets/candidate3.jpg')">
+                        <img src="assets/candidate3.jpg" alt="MetroStore home page screenshot 2">
+                    </figure>
                 </div>
-
-                <div class="gallery-note">Click a screenshot to open it in a larger viewer.</div>
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="footer-inner">
-            <div>© 2026 MetroStore</div>
-            <div>Community-made Windows 8 inspired app store project.</div>
+            <div class="gallery-note">Click a screenshot to view it in full size.</div>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <div class="viewer" id="viewer" onclick="closeViewer(event)">
-        <button class="viewer-close" type="button" onclick="closeViewer(event)" aria-label="Close">×</button>
-        <img id="viewer-image" src="" alt="MetroStore screenshot enlarged">
+<footer>
+    <div class="footer-inner">
+        <div>© 2026 MetroStore</div>
+        <div>Community-made Windows 8 inspired app store project.</div>
     </div>
+</footer>
 
-    <script>
-        const viewer = document.getElementById('viewer');
-        const viewerImage = document.getElementById('viewer-image');
+<div class="viewer" id="viewer" onclick="closeViewer(event)">
+    <button class="viewer-close" type="button" onclick="closeViewer(event)" aria-label="Close">×</button>
+    <img id="viewer-image" src="" alt="MetroStore screenshot enlarged">
+</div>
 
-        function openViewer(src) {
-            viewerImage.src = src;
-            viewer.classList.add('open');
-            document.body.style.overflow = 'hidden';
+<script>
+    const viewer = document.getElementById('viewer');
+    const viewerImage = document.getElementById('viewer-image');
+
+    function openViewer(src) {
+        viewerImage.src = src;
+        viewer.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeViewer(event) {
+        if (event.target === viewer || event.target.classList.contains('viewer-close')) {
+            viewer.classList.remove('open');
+            viewerImage.src = '';
+            document.body.style.overflow = '';
         }
+    }
 
-        function closeViewer(event) {
-            if (event.target === viewer || event.target.classList.contains('viewer-close')) {
-                viewer.classList.remove('open');
-                viewerImage.src = '';
-                document.body.style.overflow = '';
-            }
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && viewer.classList.contains('open')) {
+            viewer.classList.remove('open');
+            viewerImage.src = '';
+            document.body.style.overflow = '';
         }
+    });
+</script>
 
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape' && viewer.classList.contains('open')) {
-                viewer.classList.remove('open');
-                viewerImage.src = '';
-                document.body.style.overflow = '';
-            }
-        });
-    </script>
 </body>
 </html>

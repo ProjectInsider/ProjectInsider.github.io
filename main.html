@@ -41,9 +41,42 @@
       color: #ffffff;
       display: flex;
       align-items: center;
-      padding: 2px 6px;
+      justify-content: space-between;
+      padding: 2px 3px 2px 6px;
       font-weight: bold;
       user-select: none;
+    }
+
+    .titlebar-title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .titlebar-button {
+      width: 20px;
+      height: 18px;
+      padding: 0;
+      font-family: inherit;
+      font-size: 12px;
+      line-height: 12px;
+      font-weight: bold;
+      background: #c0c0c0;
+      color: #000000;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+      cursor: pointer;
+    }
+
+    .titlebar-button:active {
+      border-top: 2px solid #000000;
+      border-left: 2px solid #000000;
+      border-right: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #dfdfdf;
     }
 
     .content {
@@ -146,9 +179,10 @@
       box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #dfdfdf;
     }
 
-    .download:focus {
+    .download:focus,
+    .titlebar-button:focus {
       outline: 1px dotted #000000;
-      outline-offset: -5px;
+      outline-offset: -4px;
     }
 
     @media (max-width: 680px) {
@@ -160,7 +194,10 @@
 </head>
 <body>
   <div class="window">
-    <div class="titlebar">MetroStore Downloads</div>
+    <div class="titlebar">
+      <span class="titlebar-title">MetroStore Downloads</span>
+      <button class="titlebar-button" type="button" onclick="location.href='about.html'" aria-label="About MetroStore" title="About MetroStore">?</button>
+    </div>
 
     <div class="content">
       <div class="heading">Choose your MetroStore version</div>

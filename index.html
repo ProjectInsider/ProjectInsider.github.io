@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Windows 95 Test</title>
+  <title>ProjectInsider Beta</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
-    body {
+    html, body {
       width: 100%;
       height: 100%;
       margin: 0;
@@ -27,15 +24,13 @@
     }
 
     .window {
-      width: 430px;
+      width: 470px;
       background: #c0c0c0;
       border-top: 2px solid #ffffff;
       border-left: 2px solid #ffffff;
       border-right: 2px solid #000000;
       border-bottom: 2px solid #000000;
-      box-shadow:
-        inset -1px -1px 0 #808080,
-        inset 1px 1px 0 #dfdfdf;
+      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
       padding: 3px;
     }
 
@@ -51,11 +46,6 @@
       user-select: none;
     }
 
-    .titlebar-buttons {
-      display: flex;
-      gap: 2px;
-    }
-
     .titlebar-button,
     .button {
       font-family: inherit;
@@ -65,9 +55,7 @@
       border-left: 2px solid #ffffff;
       border-right: 2px solid #000000;
       border-bottom: 2px solid #000000;
-      box-shadow:
-        inset -1px -1px 0 #808080,
-        inset 1px 1px 0 #dfdfdf;
+      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
     }
 
     .titlebar-button {
@@ -77,11 +65,11 @@
       font-size: 12px;
       line-height: 12px;
       font-weight: bold;
-      cursor: default;
+      cursor: pointer;
     }
 
     .window-content {
-      min-height: 145px;
+      min-height: 170px;
       padding: 28px 24px 18px;
       color: #000000;
     }
@@ -109,8 +97,13 @@
     }
 
     .message-text {
-      padding-top: 5px;
-      line-height: 1.45;
+      padding-top: 3px;
+      line-height: 1.5;
+    }
+
+    .message-text strong {
+      display: block;
+      margin-bottom: 6px;
     }
 
     .buttons {
@@ -132,9 +125,7 @@
       border-left: 2px solid #000000;
       border-right: 2px solid #ffffff;
       border-bottom: 2px solid #ffffff;
-      box-shadow:
-        inset 1px 1px 0 #808080,
-        inset -1px -1px 0 #dfdfdf;
+      box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #dfdfdf;
     }
 
     .button:focus {
@@ -142,35 +133,46 @@
       outline-offset: -5px;
     }
 
-    @media (max-width: 520px) {
-      .window {
-        width: calc(100vw - 24px);
-      }
+    @media (max-width: 540px) {
+      .window { width: calc(100vw - 24px); }
     }
   </style>
 </head>
 <body>
   <div class="window">
     <div class="titlebar">
-      <span>Windows 95 Test</span>
-      <div class="titlebar-buttons">
-        <button class="titlebar-button" aria-label="Close">×</button>
-      </div>
+      <span>ProjectInsider Beta</span>
+      <button class="titlebar-button" type="button" aria-label="Close" onclick="closeSite()">×</button>
     </div>
 
     <div class="window-content">
       <div class="message">
         <div class="icon">i</div>
         <div class="message-text">
-          This is a test window.<br>
-          Welcome to ProjectInsider Windows 95.
+          <strong>Beta notice</strong>
+          This website is currently in beta.<br>
+          Some features may be unfinished or unavailable.<br><br>
+          Click OK to continue to ProjectInsider.
         </div>
       </div>
 
       <div class="buttons">
-        <button class="button" type="button">OK</button>
+        <button class="button" type="button" onclick="enterSite()">OK</button>
       </div>
     </div>
   </div>
+
+  <script>
+    function enterSite() {
+      window.location.href = "main.html";
+    }
+
+    function closeSite() {
+      window.close();
+      setTimeout(function () {
+        window.location.replace("about:blank");
+      }, 50);
+    }
+  </script>
 </body>
 </html>

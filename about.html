@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About MetroStore</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+      font-size: 12px;
+      background: #008080;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .window {
+      width: 620px;
+      max-width: 100%;
+      background: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+      padding: 3px;
+    }
+
+    .titlebar {
+      height: 24px;
+      background: #000080;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2px 3px 2px 6px;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .close-button,
+    .button {
+      font-family: inherit;
+      background: #c0c0c0;
+      color: #000000;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+      cursor: pointer;
+    }
+
+    .close-button {
+      width: 20px;
+      height: 18px;
+      padding: 0;
+      font-size: 12px;
+      line-height: 12px;
+      font-weight: bold;
+    }
+
+    .close-button:active,
+    .button:active {
+      border-top: 2px solid #000000;
+      border-left: 2px solid #000000;
+      border-right: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #dfdfdf;
+    }
+
+    .content {
+      padding: 22px;
+      line-height: 1.45;
+      color: #000000;
+    }
+
+    .intro {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .icon-box {
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px;
+      transform: skewY(-7deg);
+    }
+
+    .logo span:nth-child(1) { background: #ff0000; }
+    .logo span:nth-child(2) { background: #00a000; }
+    .logo span:nth-child(3) { background: #0000d0; }
+    .logo span:nth-child(4) { background: #ffff00; }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .group {
+      margin: 18px 0;
+      padding: 14px;
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      background: #c0c0c0;
+    }
+
+    .group-title {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .version-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 8px;
+      margin: 4px 0;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+    }
+
+    .button {
+      min-width: 90px;
+      height: 28px;
+      padding: 2px 14px;
+    }
+
+    @media (max-width: 520px) {
+      .intro { flex-direction: column; }
+      .version-row { grid-template-columns: 1fr; gap: 1px; margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="window">
+    <div class="titlebar">
+      <span>About MetroStore</span>
+      <button class="close-button" type="button" onclick="location.href='main.html'" aria-label="Close">×</button>
+    </div>
+
+    <div class="content">
+      <div class="intro">
+        <div class="icon-box">
+          <div class="logo" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div>
+          <h1>MetroStore</h1>
+          <p>MetroStore is a community-made app store project inspired by the original Microsoft Store experience from the Windows 8 and early Windows 10 era.</p>
+          <p>Its goal is to bring classic Metro and Windows Store apps back into an interface that feels native to the Windows version you are using.</p>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-title">Planned versions</div>
+        <div class="version-row"><b>MetroStore 1.0</b><span>for Windows 8</span></div>
+        <div class="version-row"><b>MetroStore 2.0</b><span>for Windows 8.1</span></div>
+        <div class="version-row"><b>MetroStore 2.5</b><span>for Windows 10 Beta builds</span></div>
+        <div class="version-row"><b>MetroStore 3.0</b><span>for Windows 10 RTM</span></div>
+      </div>
+
+      <p>Each release is planned to match the design, APIs and behavior of its target Windows generation instead of using one identical client everywhere.</p>
+      <p>This website is currently in beta, so downloads and features may change while development continues.</p>
+
+      <div class="actions">
+        <button class="button" type="button" onclick="location.href='main.html'">OK</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ProjectInsider</title>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       height: 100%;
       margin: 0;
@@ -24,13 +27,16 @@
     }
 
     .window {
-      width: 430px;
+      width: 640px;
+      max-width: calc(100vw - 24px);
       background: #c0c0c0;
       border-top: 2px solid #ffffff;
       border-left: 2px solid #ffffff;
       border-right: 2px solid #000000;
       border-bottom: 2px solid #000000;
-      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+      box-shadow:
+        inset -1px -1px 0 #808080,
+        inset 1px 1px 0 #dfdfdf;
       padding: 3px;
     }
 
@@ -42,22 +48,119 @@
       align-items: center;
       padding: 2px 6px;
       font-weight: bold;
+      user-select: none;
     }
 
     .content {
-      min-height: 150px;
-      padding: 28px;
-      line-height: 1.5;
+      padding: 26px 24px 30px;
+    }
+
+    .heading {
+      margin-bottom: 26px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .versions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .version {
+      text-align: center;
+      user-select: none;
+    }
+
+    .logo-frame {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+      box-shadow:
+        inset -1px -1px 0 #808080,
+        inset 1px 1px 0 #dfdfdf;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      transform: skewY(-7deg);
+    }
+
+    .logo span:nth-child(1) { background: #ff0000; }
+    .logo span:nth-child(2) { background: #00a000; }
+    .logo span:nth-child(3) { background: #0000d0; }
+    .logo span:nth-child(4) { background: #ffff00; }
+
+    .version-title {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .versions {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 <body>
   <div class="window">
     <div class="titlebar">ProjectInsider</div>
+
     <div class="content">
-      <b>Welcome to ProjectInsider.</b><br><br>
-      Main page placeholder.<br>
-      Windows 95 environment under construction.
+      <div class="heading">Choose a version</div>
+
+      <div class="versions">
+        <div class="version">
+          <div class="logo-frame">
+            <div class="logo" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="version-title">1.0</div>
+        </div>
+
+        <div class="version">
+          <div class="logo-frame">
+            <div class="logo" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="version-title">2.0</div>
+        </div>
+
+        <div class="version">
+          <div class="logo-frame">
+            <div class="logo" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="version-title">2.5</div>
+        </div>
+
+        <div class="version">
+          <div class="logo-frame">
+            <div class="logo" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="version-title">3.0</div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

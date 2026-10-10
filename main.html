@@ -1,252 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MetroStore Downloads</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
-      font-size: 12px;
-    }
-
-    body {
-      background: #008080;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .window {
-      width: 760px;
-      max-width: calc(100vw - 24px);
-      background: #c0c0c0;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #000000;
-      border-bottom: 2px solid #000000;
-      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
-      padding: 3px;
-    }
-
-    .titlebar {
-      height: 24px;
-      background: #000080;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2px 3px 2px 6px;
-      font-weight: bold;
-      user-select: none;
-    }
-
-    .titlebar-title {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    .titlebar-button {
-      width: 20px;
-      height: 18px;
-      padding: 0;
-      font-family: inherit;
-      font-size: 12px;
-      line-height: 12px;
-      font-weight: bold;
-      background: #c0c0c0;
-      color: #000000;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #000000;
-      border-bottom: 2px solid #000000;
-      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
-      cursor: pointer;
-    }
-
-    .titlebar-button:active {
-      border-top: 2px solid #000000;
-      border-left: 2px solid #000000;
-      border-right: 2px solid #ffffff;
-      border-bottom: 2px solid #ffffff;
-      box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #dfdfdf;
-    }
-
-    .content {
-      padding: 24px 24px 28px;
-    }
-
-    .heading {
-      margin-bottom: 5px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .subtitle {
-      margin-bottom: 24px;
-      text-align: center;
-    }
-
-    .versions {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .version {
-      min-width: 0;
-      padding: 10px;
-      text-align: center;
-      background: #c0c0c0;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #808080;
-      border-bottom: 2px solid #808080;
-    }
-
-    .logo-frame {
-      width: 92px;
-      height: 92px;
-      margin: 0 auto 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #c0c0c0;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #000000;
-      border-bottom: 2px solid #000000;
-      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
-    }
-
-    .logo {
-      width: 60px;
-      height: 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 3px;
-      transform: skewY(-7deg);
-    }
-
-    .logo span:nth-child(1) { background: #ff0000; }
-    .logo span:nth-child(2) { background: #00a000; }
-    .logo span:nth-child(3) { background: #0000d0; }
-    .logo span:nth-child(4) { background: #ffff00; }
-
-    .version-title {
-      margin-bottom: 4px;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    .system {
-      min-height: 30px;
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-
-    .download {
-      width: 100%;
-      height: 28px;
-      padding: 2px 8px;
-      font-family: inherit;
-      font-size: 12px;
-      background: #c0c0c0;
-      color: #000000;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #000000;
-      border-bottom: 2px solid #000000;
-      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
-      cursor: pointer;
-    }
-
-    .download:active {
-      border-top: 2px solid #000000;
-      border-left: 2px solid #000000;
-      border-right: 2px solid #ffffff;
-      border-bottom: 2px solid #ffffff;
-      box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #dfdfdf;
-    }
-
-    .download:focus,
-    .titlebar-button:focus {
-      outline: 1px dotted #000000;
-      outline-offset: -4px;
-    }
-
-    @media (max-width: 680px) {
-      html, body { overflow: auto; }
-      body { align-items: flex-start; padding: 12px 0; }
-      .versions { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="ProjectInsider — an independent project inspired by the Windows 8 and early Windows 10 app experience. Explore MetroStore editions.">
+  <title>MetroStore Downloads | ProjectInsider</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
 </head>
 <body>
-  <div class="window">
-    <div class="titlebar">
-      <span class="titlebar-title">MetroStore Downloads</span>
-      <button class="titlebar-button" type="button" onclick="location.href='about.html'" aria-label="About MetroStore" title="About MetroStore">?</button>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="ProjectInsider home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="brand-name">ProjectInsider<small>INSIDER PREVIEW</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+          <a href="main.html" aria-current="page">Downloads</a>
+          <a href="about.html">About</a>
+      </nav>
+      <a class="header-external" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
     </div>
+  </header>
+  <main id="main-content">
 
-    <div class="content">
-      <div class="heading">Choose your MetroStore version</div>
-      <div class="subtitle">Select the version made for your Windows release.</div>
-
-      <div class="versions">
-        <div class="version">
-          <div class="logo-frame">
-            <div class="logo" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          </div>
-          <div class="version-title">MetroStore 1.0</div>
-          <div class="system">Windows 8</div>
-          <button class="download" type="button" onclick="comingSoon('MetroStore 1.0 for Windows 8')">Download</button>
+    <section class="page-heading page-container fade-up">
+      <p class="eyebrow">Software / Downloads</p>
+      <h1>MetroStore <span>Downloads.</span></h1>
+      <p class="lead">Choose the MetroStore edition designed for your version of Windows. Four generations, one shared idea: bring back the classic app Store experience.</p>
+    </section>
+    <section class="download-section page-container" aria-label="MetroStore versions">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <label for="version-search">Find your version</label>
+          <input id="version-search" type="search" autocomplete="off" placeholder="Search Windows or MetroStore..." aria-controls="version-grid">
         </div>
-
-        <div class="version">
-          <div class="logo-frame">
-            <div class="logo" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          </div>
-          <div class="version-title">MetroStore 2.0</div>
-          <div class="system">Windows 8.1</div>
-          <button class="download" type="button" onclick="comingSoon('MetroStore 2.0 for Windows 8.1')">Download</button>
-        </div>
-
-        <div class="version">
-          <div class="logo-frame">
-            <div class="logo" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          </div>
-          <div class="version-title">MetroStore 2.5</div>
-          <div class="system">Windows 10 Beta</div>
-          <button class="download" type="button" onclick="comingSoon('MetroStore 2.5 for Windows 10 Beta')">Download</button>
-        </div>
-
-        <div class="version">
-          <div class="logo-frame">
-            <div class="logo" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          </div>
-          <div class="version-title">MetroStore 3.0</div>
-          <div class="system">Windows 10 RTM</div>
-          <button class="download" type="button" onclick="comingSoon('MetroStore 3.0 for Windows 10 RTM')">Download</button>
-        </div>
+        <span class="version-count" id="version-count" aria-live="polite">4 versions</span>
       </div>
-    </div>
-  </div>
+      <div class="download-grid" id="version-grid">
+        <article class="download-card" id="metrostore-1">
+          <div class="download-art"><span class="windows-mark windows-mark--white" aria-hidden="true"><span></span><span></span><span></span><span></span></span></div>
+          <h2>MetroStore 1.0</h2>
+          <p class="platform">Designed for Windows 8</p>
+          <div class="status"><span class="status-dot" aria-hidden="true"></span> Coming soon</div>
+          <button class="button-primary" type="button" data-release="MetroStore 1.0 for Windows 8">Download <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="download-card" id="metrostore-2">
+          <div class="download-art"><span class="windows-mark windows-mark--white" aria-hidden="true"><span></span><span></span><span></span><span></span></span></div>
+          <h2>MetroStore 2.0</h2>
+          <p class="platform">Designed for Windows 8.1</p>
+          <div class="status"><span class="status-dot" aria-hidden="true"></span> Coming soon</div>
+          <button class="button-primary" type="button" data-release="MetroStore 2.0 for Windows 8.1">Download <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="download-card" id="metrostore-25">
+          <div class="download-art"><span class="windows-mark windows-mark--white" aria-hidden="true"><span></span><span></span><span></span><span></span></span></div>
+          <h2>MetroStore 2.5</h2>
+          <p class="platform">Designed for Windows 10 Beta</p>
+          <div class="status"><span class="status-dot" aria-hidden="true"></span> Coming soon</div>
+          <button class="button-primary" type="button" data-release="MetroStore 2.5 for Windows 10 Beta">Download <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="download-card" id="metrostore-3">
+          <div class="download-art"><span class="windows-mark windows-mark--white" aria-hidden="true"><span></span><span></span><span></span><span></span></span></div>
+          <h2>MetroStore 3.0</h2>
+          <p class="platform">Designed for Windows 10 RTM</p>
+          <div class="status"><span class="status-dot" aria-hidden="true"></span> Coming soon</div>
+          <button class="button-primary" type="button" data-release="MetroStore 3.0 for Windows 10 RTM">Download <span aria-hidden="true">→</span></button>
+        </article>
+      </div>
+      <div class="empty-state" id="empty-state" hidden>No versions match your search. Try a different Windows release.</div>
+      <div class="download-note"><span class="note-icon" aria-hidden="true">ⓘ</span><span><strong>Development notice</strong><br>All four editions are currently planned. Downloadable installers have not been published on this website yet.</span></div>
+    </section>
+    <dialog class="release-dialog" id="release-dialog" aria-labelledby="dialog-release-title">
+      <button class="dialog-close" type="button" id="dialog-close" aria-label="Close dialog">×</button>
+      <div class="dialog-icon" aria-hidden="true">i</div>
+      <h2 id="dialog-release-title">MetroStore</h2>
+      <p>This version is not available to download yet. Check back for future releases from ProjectInsider.</p>
+      <button class="button-primary" type="button" id="dialog-confirm">OK</button>
+    </dialog>
 
-  <script>
-    function comingSoon(version) {
-      alert(version + '\n\nDownload is not available yet.');
-    }
-  </script>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© 2026 ProjectInsider. An independent Windows enthusiast project.</span>
+      <span>Inspired by classic Windows and the Universal Windows Platform. <a href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">GitHub ↗</a></span>
+    </div>
+  </footer>
 </body>
 </html>

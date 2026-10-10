@@ -1,178 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProjectInsider Beta</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
-      font-size: 12px;
-    }
-
-    body {
-      background: #008080;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .window {
-      width: 470px;
-      background: #c0c0c0;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #000000;
-      border-bottom: 2px solid #000000;
-      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
-      padding: 3px;
-    }
-
-    .titlebar {
-      height: 24px;
-      background: #000080;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2px 3px 2px 6px;
-      font-weight: bold;
-      user-select: none;
-    }
-
-    .titlebar-button,
-    .button {
-      font-family: inherit;
-      background: #c0c0c0;
-      color: #000000;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #000000;
-      border-bottom: 2px solid #000000;
-      box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
-    }
-
-    .titlebar-button {
-      width: 20px;
-      height: 18px;
-      padding: 0;
-      font-size: 12px;
-      line-height: 12px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .window-content {
-      min-height: 170px;
-      padding: 28px 24px 18px;
-      color: #000000;
-    }
-
-    .message {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .icon {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 auto;
-      background: #ffffff;
-      border: 2px solid #000000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000080;
-      font-size: 24px;
-      font-family: Georgia, serif;
-      font-weight: bold;
-      font-style: italic;
-    }
-
-    .message-text {
-      padding-top: 3px;
-      line-height: 1.5;
-    }
-
-    .message-text strong {
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      margin-top: 28px;
-    }
-
-    .button {
-      min-width: 82px;
-      height: 26px;
-      padding: 2px 14px;
-      cursor: pointer;
-    }
-
-    .button:active,
-    .titlebar-button:active {
-      border-top: 2px solid #000000;
-      border-left: 2px solid #000000;
-      border-right: 2px solid #ffffff;
-      border-bottom: 2px solid #ffffff;
-      box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #dfdfdf;
-    }
-
-    .button:focus {
-      outline: 1px dotted #000000;
-      outline-offset: -5px;
-    }
-
-    @media (max-width: 540px) {
-      .window { width: calc(100vw - 24px); }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="ProjectInsider — an independent project inspired by the Windows 8 and early Windows 10 app experience. Explore MetroStore editions.">
+  <title>Home | ProjectInsider</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
 </head>
 <body>
-  <div class="window">
-    <div class="titlebar">
-      <span>ProjectInsider Beta</span>
-      <button class="titlebar-button" type="button" aria-label="Close" onclick="closeSite()">×</button>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="ProjectInsider home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="brand-name">ProjectInsider<small>INSIDER PREVIEW</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+          <a href="main.html">Downloads</a>
+          <a href="about.html">About</a>
+      </nav>
+      <a class="header-external" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
     </div>
+  </header>
+  <main id="main-content">
 
-    <div class="window-content">
-      <div class="message">
-        <div class="icon">i</div>
-        <div class="message-text">
-          <strong>Beta notice</strong>
-          This website is currently in beta.<br>
-          Some features may be unfinished or unavailable.<br><br>
-          Click OK to continue to ProjectInsider.
+    <section class="hero-home page-container">
+      <div class="hero-copy fade-up">
+        <p class="eyebrow">ProjectInsider / Beta</p>
+        <h1>Classic Windows.<br><span>New possibilities.</span></h1>
+        <p class="lead">Welcome to ProjectInsider. A home for projects that bring the spirit of Windows 8 and early Windows 10 back to life — starting with MetroStore.</p>
+        <div class="button-row">
+          <a class="button-primary" href="main.html">Explore MetroStore <span aria-hidden="true">→</span></a>
+          <a class="button-link" href="about.html">About the project <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="microcopy">Made for the community. Inspired by the Windows experience we love.</p>
+      </div>
+      <div class="hero-visual fade-up" aria-label="MetroStore interface concept">
+        <div class="visual-top"><span>PROJECTINSIDER / METROSTORE</span><span class="visual-dots"><i></i><i></i><i></i></span></div>
+        <div class="visual-heading">Store</div>
+        <p class="visual-copy">Discover apps for your Windows.</p>
+        <div class="visual-feature">
+          <div><strong>MetroStore</strong><span>Experience the classic Store again</span></div>
+          <span class="windows-mark windows-mark--white visual-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        </div>
+        <div class="visual-mini-grid"><div>Apps</div><div>Games</div><div>Library</div></div>
+      </div>
+    </section>
+
+    <aside class="preview-strip" aria-label="Website status">
+      <div class="page-container">
+        <p><b>Preview website.</b> ProjectInsider is under development, and downloads are not available yet.</p>
+        <a href="about.html">Learn more <span aria-hidden="true">→</span></a>
+      </div>
+    </aside>
+
+    <section class="section page-container" aria-labelledby="discover-title">
+      <div class="section-head">
+        <div><p class="eyebrow">Discover</p><h2 id="discover-title">Explore ProjectInsider</h2><p class="section-description">A clean home for our Windows-inspired software projects.</p></div>
+      </div>
+      <div class="feature-grid">
+        <a class="feature-card feature-card--blue" href="main.html">
+          <span class="feature-symbol" aria-hidden="true">⊞</span>
+          <h3>MetroStore</h3>
+          <p>Explore planned Store editions for classic Windows releases.</p>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="feature-card" href="about.html">
+          <span class="feature-symbol" aria-hidden="true">i</span>
+          <h3>Our story</h3>
+          <p>Find out why ProjectInsider is bringing classic Microsoft design back.</p>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="feature-card" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">
+          <span class="feature-symbol" aria-hidden="true">&lt;/&gt;</span>
+          <h3>On GitHub</h3>
+          <p>Visit the ProjectInsider GitHub profile and follow our development.</p>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section section--soft" aria-labelledby="editions-title">
+      <div class="page-container">
+        <div class="section-head">
+          <div><p class="eyebrow">MetroStore</p><h2 id="editions-title">One experience. Four eras.</h2><p class="section-description">Each planned release is tailored to a different generation of Windows.</p></div>
+          <a class="inline-arrow" href="main.html">All downloads <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="version-preview-grid">
+          <a class="version-preview" href="main.html#metrostore-1"><span><span class="tiny-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><strong>MetroStore 1.0</strong><small>Windows 8 · Coming soon</small></a>
+          <a class="version-preview" href="main.html#metrostore-2"><span><span class="tiny-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><strong>MetroStore 2.0</strong><small>Windows 8.1 · Coming soon</small></a>
+          <a class="version-preview" href="main.html#metrostore-25"><span><span class="tiny-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><strong>MetroStore 2.5</strong><small>Windows 10 Beta · Coming soon</small></a>
+          <a class="version-preview" href="main.html#metrostore-3"><span><span class="tiny-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><strong>MetroStore 3.0</strong><small>Windows 10 RTM · Coming soon</small></a>
         </div>
       </div>
+    </section>
 
-      <div class="buttons">
-        <button class="button" type="button" onclick="enterSite()">OK</button>
-      </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© 2026 ProjectInsider. An independent Windows enthusiast project.</span>
+      <span>Inspired by classic Windows and the Universal Windows Platform. <a href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">GitHub ↗</a></span>
     </div>
-  </div>
-
-  <script>
-    function enterSite() {
-      window.location.href = "main.html";
-    }
-
-    function closeSite() {
-      window.close();
-      setTimeout(function () {
-        window.location.replace("about:blank");
-      }, 50);
-    }
-  </script>
+  </footer>
 </body>
 </html>

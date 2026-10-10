@@ -13,18 +13,36 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="topbar">
     <div class="topbar-inner">
+      <button class="hamburger-button" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="app-navigation" aria-expanded="false" title="Open menu">
+        <span class="hamburger-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
       <a class="brand" href="index.html" aria-label="ProjectInsider home">
         <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         <span class="brand-name">ProjectInsider<small>INSIDER PREVIEW</small></span>
       </a>
-      <nav class="primary-nav" aria-label="Main navigation">
-        <a href="index.html" aria-current="page">Home</a>
-          <a href="main.html">Downloads</a>
-          <a href="about.html">About</a>
-      </nav>
+      
       <a class="header-external" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
     </div>
   </header>
+
+  <button class="drawer-scrim" id="drawer-scrim" type="button" aria-label="Close navigation menu" tabindex="-1" hidden></button>
+  <aside class="nav-drawer" id="app-navigation" aria-label="Navigation menu" aria-hidden="true" inert>
+    <div class="drawer-header">
+      <button class="drawer-close" id="drawer-close" type="button" aria-label="Close navigation menu" title="Close menu">×</button>
+      <span class="drawer-header-title">ProjectInsider</span>
+    </div>
+    <div class="drawer-app-title">INSIDER PREVIEW</div>
+    <nav class="drawer-nav" aria-label="Site pages">
+        <a class="drawer-link" href="index.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 3l9 7v11h-7v-7h-4v7H3z"/></svg><span>Home</span></a>
+        <a class="drawer-link" href="main.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 18v3h16v-3"/></svg><span>Downloads</span></a>
+        <a class="drawer-link" href="about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></svg><span>About</span></a>
+    </nav>
+    <div class="drawer-section-label">PROJECT</div>
+    <nav class="drawer-nav" aria-label="External links">
+      <a class="drawer-link" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1-4-2-6-3m12 5v-3a3 3 0 0 0-.8-2.3c2.7-.3 5.3-1.3 5.3-5.9a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.4-.4-3.4 1.2a11 11 0 0 0-6.4 0C6.3 3 4.9 3.4 4.9 3.4a4.2 4.2 0 0 0-.1 3.2 4.6 4.6 0 0 0-1.3 3.2c0 4.6 2.6 5.6 5.3 5.9A3 3 0 0 0 8 18v3"/></svg><span>GitHub</span><span class="drawer-external-arrow" aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="drawer-bottom"><span class="drawer-bottom-mark" aria-hidden="true">⊞</span><div>ProjectInsider<br><small>Classic Windows. New possibilities.</small></div></div>
+  </aside>
   <main id="main-content">
 
     <section class="hero-home page-container">

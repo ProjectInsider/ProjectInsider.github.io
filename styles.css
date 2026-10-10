@@ -212,3 +212,121 @@ p { margin-top: 0; }
   html { scroll-behavior:auto; }
   *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
 }
+
+/* UWP-inspired SplitView hamburger navigation */
+.topbar-inner { gap: 18px; }
+.hamburger-button {
+  flex: 0 0 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-left: -10px;
+  padding: 0;
+  color: var(--ink);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color .18s ease;
+}
+.hamburger-button:hover, .hamburger-button:focus-visible { background: var(--accent-light); }
+.hamburger-lines { width: 20px; display: flex; flex-direction: column; gap: 4px; }
+.hamburger-lines span { display: block; height: 2px; width: 20px; background: currentColor; }
+.drawer-scrim {
+  display: block;
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgba(18, 29, 42, .38);
+  cursor: default;
+}
+.drawer-scrim[hidden] { display: none !important; }
+.nav-drawer {
+  position: fixed;
+  z-index: 61;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(340px, calc(100vw - 24px));
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #fff;
+  box-shadow: 12px 0 42px rgba(0,0,0,.15);
+  transform: translateX(-104%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform .25s cubic-bezier(.15,.85,.32,1), visibility 0s linear .25s;
+}
+body.drawer-open .nav-drawer {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform .25s cubic-bezier(.15,.85,.32,1), visibility 0s linear 0s;
+}
+body.drawer-open { overflow: hidden; }
+.drawer-header {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px 0 10px;
+}
+.drawer-header-title { font-size: 20px; font-weight: 600; letter-spacing: -.5px; }
+.drawer-close {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 0;
+  color: #323232;
+  background: transparent;
+  cursor: pointer;
+  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+  font-weight: 300;
+  font-size: 34px;
+  line-height: 1;
+}
+.drawer-close:hover { background: var(--accent-light); }
+.drawer-app-title { margin: 25px 24px 15px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+.drawer-nav { display: flex; flex-direction: column; padding: 0 12px; }
+.drawer-link {
+  min-height: 53px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 11px 17px;
+  color: #303030;
+  border-left: 4px solid transparent;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color .15s ease;
+}
+.drawer-link svg { display: block; width: 20px; height: 20px; flex: 0 0 20px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.drawer-link:hover { color: var(--ink); background: #f1f1f1; }
+.drawer-link[aria-current="page"] { background: #eaf4fc; color: var(--accent-dark); border-left-color: var(--accent); font-weight: 600; }
+.drawer-section-label { margin: 29px 29px 12px; padding-top: 18px; border-top: 1px solid var(--border); color: #777; font-size: 10px; font-weight: 700; letter-spacing: 2px; }
+.drawer-external-arrow { margin-left: auto; color: var(--accent); }
+.drawer-bottom { margin-top: auto; min-height: 100px; display: flex; align-items: center; gap: 15px; border-top: 1px solid var(--border); padding: 20px 29px; color: #555; font-size: 13px; line-height: 1.5; }
+.drawer-bottom small { color: #888; font-size: 11px; }
+.drawer-bottom-mark { color: var(--accent); font-size: 32px; }
+@media (max-width: 760px) {
+  .topbar-inner { column-gap: 12px; }
+  .hamburger-button { margin-left: -6px; }
+}
+@media (max-width: 380px) {
+  .header-external { font-size: 10px; }
+  .brand-name { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-drawer, body.drawer-open .nav-drawer { transition: none; }
+}

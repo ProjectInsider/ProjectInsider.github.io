@@ -1,127 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="ProjectInsider — an independent project inspired by the Windows 8 and early Windows 10 app experience. Explore MetroStore editions.">
-  <title>Home | ProjectInsider</title>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="app.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3a6ea5">
+<meta name="description" content="ProjectInsider — an interactive Windows 2000-inspired desktop showcasing our only official software project, MetroStore.">
+<title>ProjectInsider - Windows 2000 Desktop</title>
+<style>
+:root{--face:#c0c0c0;--light:#fff;--shadow:#808080;--dark:#404040;--ink:#000;--blue:#000080;--desk:#3a6ea5}
+*{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden}body{font:12px Tahoma,"MS Sans Serif",Arial,sans-serif;color:var(--ink);background:var(--desk);user-select:none}button,input,select{font:inherit}button{cursor:default}button:focus-visible,a:focus-visible{outline:1px dotted #000;outline-offset:-3px}a{color:#000080}.skip{position:absolute;top:-100px;left:12px;z-index:200;background:#fff;padding:8px}.skip:focus{top:10px}.defs{position:absolute;width:0;height:0;overflow:hidden}
+.desktop{height:100dvh;min-height:300px;position:relative;overflow:hidden;background:var(--desk)}.desktop.alt-wall{--desk:#008080}.desktop.win-wall{background:linear-gradient(130deg,#245285,#3a6ea5 58%,#477eae)}.desktop.win-wall.alt-wall{background:#008080}
+.desktop-icons{position:absolute;top:13px;left:12px;bottom:46px;display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-start;gap:13px 12px;z-index:1;pointer-events:none}.desktop-icon{position:relative;width:87px;min-height:75px;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:1px solid transparent;color:#fff;text-shadow:1px 1px #000;text-align:center;padding:3px 2px;pointer-events:auto}.desktop-icon svg{width:39px;height:39px;filter:drop-shadow(1px 1px 0 #173f63)}.desktop-icon span{max-width:86px;padding:2px 3px;line-height:1.25;overflow-wrap:anywhere}.desktop-icon.selected span,.desktop-icon:focus-visible span{background:#000080;outline:1px dotted #fff}.desktop-icon:hover{filter:brightness(1.1)}
+.window-layer{position:absolute;inset:0 0 41px 0;pointer-events:none;overflow:hidden}.window{position:absolute;top:60px;left:190px;width:min(760px,calc(100vw - 40px));height:min(550px,calc(100dvh - 105px));min-width:270px;min-height:200px;display:flex;flex-direction:column;background:var(--face);border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:1px 1px 0 #000,2px 2px 1px #1119;pointer-events:auto;resize:both;overflow:hidden}.window[hidden]{display:none!important}.window.active .titlebar{background:linear-gradient(90deg,#000080,#1084d0)}.titlebar{height:22px;min-height:22px;background:linear-gradient(90deg,#808080,#b5b5b5);padding:2px 2px 2px 4px;color:#fff;display:flex;align-items:center;gap:4px;font-weight:bold;cursor:move;touch-action:none}.titlebar-icon{width:17px;height:17px;flex:none}.window-title{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.window-controls{display:flex;gap:2px;flex:none}.bevel-button,.control{border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:inset -1px -1px #808080,inset 1px 1px #dfdfdf;background:var(--face);color:#000;border-radius:0;min-height:24px;padding:2px 10px}.bevel-button:active,.control:active,.bevel-button.pressed{border-color:#404040 #fff #fff #404040;box-shadow:inset 1px 1px #808080;padding-top:3px;padding-left:11px}.control{width:18px;height:17px;min-height:17px;padding:0;display:grid;place-items:center;font:bold 12px Arial;line-height:1;box-shadow:inset -1px -1px #808080}.control:active{padding:1px 0 0 1px}.control.close-control{margin-left:2px}.window.maximized{inset:0!important;width:100%!important;height:100%!important;resize:none!important}.menubar{height:24px;min-height:24px;display:flex;align-items:center;padding-left:3px;gap:0}.menubar button{border:1px solid transparent;background:none;padding:3px 8px}.menubar button:hover{border-color:#fff #808080 #808080 #fff}.toolbar{display:flex;align-items:center;gap:5px;padding:5px 7px;min-height:42px;border-top:1px solid #fff;border-bottom:1px solid #808080}.toolbar-label{color:#555}.address{display:flex;align-items:center;gap:5px;border:1px inset #aaa;background:white;flex:1;padding:5px;min-width:0}.address svg{width:16px;height:16px}.address span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.win-body{flex:1;min-height:0;margin:2px;border:2px inset #dedede;background:#fff;overflow:auto;user-select:text}.statusbar{height:22px;min-height:22px;display:flex;align-items:center;padding:2px 6px;gap:12px}.statusbar span{flex:1;border:1px inset #ddd;padding:2px 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.explorer{display:flex;min-height:100%;background:#fff}.explorer-side{width:195px;flex:none;background:linear-gradient(125deg,#fff,#e8e8ee);border-right:1px solid #aaa;padding:18px 12px}.side-hero{font-size:20px;font-weight:bold;color:#193a85;border-bottom:1px solid #bbb;padding-bottom:10px;overflow-wrap:anywhere}.side-sub{font-size:11px;color:#555;margin-top:11px;line-height:1.7}.explorer-main{padding:21px 24px;flex:1;min-width:0}.explorer-main h1{font-size:22px;color:#1d427d;margin:0 0 14px}.explorer-main h2{font-size:17px;color:#123e7b;margin:0 0 8px}.explorer-main p{line-height:1.65;margin:0 0 12px}.classic-rule{border:0;border-top:1px solid #9c9c9c;border-bottom:1px solid #fff;margin:16px 0}.hero-project{display:flex;gap:17px;align-items:center}.hero-project svg{width:72px;height:72px;flex:none}.hero-project h1{margin:0}.quiet{font-size:11px;color:#555}.file-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:12px 8px;margin:12px 0}.file-tile{background:transparent;border:1px solid transparent;text-align:center;padding:8px 5px;color:#000;display:flex;flex-direction:column;align-items:center;gap:7px;word-break:break-word}.file-tile:hover,.file-tile:focus-visible{background:#e8efff;border:1px dotted #000}.file-tile svg{width:40px;height:40px}.file-tile small{color:#555}.launch{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.classic-panel{background:#e8e8e8;border:2px inset #eee;padding:12px;margin:12px 0}.classic-panel p:last-child{margin-bottom:0}.project-tag{display:inline-block;background:#000080;color:#fff;font-weight:bold;padding:3px 6px;letter-spacing:.5px;font-size:11px}.versions{border-collapse:collapse;width:100%;font-size:12px;margin:12px 0}.versions th{background:#d6d6d6;text-align:left;border:1px solid #858585;padding:8px}.versions td{border-bottom:1px solid #ddd;padding:9px 7px}.versions tr:hover td{background:#edf2fa}.versions a{white-space:nowrap}.screenshot-strip{display:flex;gap:12px;flex-wrap:wrap}.screenshot-strip img{width:min(100%,235px);max-height:160px;object-fit:cover;border:2px inset #bbb}.fake-browser{height:100%;display:flex;flex-direction:column}.browser-page{padding:27px;flex:1;line-height:1.7;background:white}.browser-page h1{color:#000080;font:normal 26px Georgia,serif}.browser-address{background:white;border:2px inset #ddd;padding:5px 8px;word-break:break-all}.browser-link{display:block;font-weight:bold;margin:8px 0}
+.taskbar{position:absolute;bottom:0;left:0;right:0;height:41px;background:var(--face);border-top:2px solid #fff;box-shadow:0 -1px #808080;display:flex;align-items:center;padding:3px;gap:4px;z-index:90}.start-button{font-size:14px;font-weight:bold;height:31px;min-width:84px;padding:2px 9px;display:flex;align-items:center;gap:5px}.start-button svg{width:22px;height:22px}.start-button.active{border-color:#404040 #fff #fff #404040;box-shadow:inset 1px 1px #808080}.task-separator{height:25px;border-left:1px solid #808080;border-right:1px solid #fff;margin:0 2px}.task-apps{display:flex;align-items:center;gap:4px;flex:1;min-width:0;height:100%;overflow:auto;scrollbar-width:thin}.task-button{min-width:80px;max-width:175px;flex:1;display:flex;align-items:center;gap:5px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:29px;padding:2px 7px}.task-button.active{border-color:#404040 #fff #fff #404040;background:#b5b5b5;box-shadow:inset 1px 1px #808080}.task-button svg{width:17px;height:17px;flex:none}.task-button span{overflow:hidden;text-overflow:ellipsis}.tray{border:2px inset #f0f0f0;height:30px;display:flex;align-items:center;gap:8px;padding:2px 9px;min-width:96px;justify-content:space-between}.tray svg{width:16px;height:16px}.tray button{padding:0;border:0;background:none}.tray-clock{white-space:nowrap}
+.start-menu{position:absolute;bottom:41px;left:2px;width:300px;height:auto;max-height:calc(100dvh - 70px);background:var(--face);border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:2px 2px #111;z-index:100;display:flex;overflow:auto}.start-menu[hidden],.context-menu[hidden],.power-screen[hidden]{display:none!important}.start-side{width:32px;flex:none;background:linear-gradient(#000080,#2571ae);color:#fff;font:bold 17px Arial;display:flex;align-items:flex-end;justify-content:center;padding:8px 0}.start-side span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}.start-side small{font-weight:normal}.start-items{flex:1;padding:5px 3px}.start-heading{padding:4px 10px;color:#555;font-size:11px;border-bottom:1px solid #808080;margin-bottom:5px}.start-item{border:0;width:100%;padding:7px 8px;display:flex;align-items:center;gap:10px;background:transparent;color:#000;text-align:left;min-height:35px}.start-item:hover,.start-item:focus-visible{background:#000080;color:#fff}.start-item svg{width:23px;height:23px;flex:none}.start-item span{flex:1}.start-item .arrow{font-size:13px;flex:none}.start-divider{border-top:1px solid #808080;border-bottom:1px solid #fff;margin:4px}
+.context-menu{position:absolute;min-width:175px;background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:2px 2px #111;z-index:150;padding:3px}.context-menu button{display:block;width:100%;border:0;background:none;text-align:left;padding:6px 10px}.context-menu button:hover{background:#000080;color:#fff}
+.notepad{width:100%;height:100%;border:0;resize:none;padding:10px;font:13px "Courier New",monospace;outline:none;background:white;color:#111}
+.settings-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:15px 0}.swatch{width:40px;height:40px;border:2px solid;border-color:#fff #444 #444 #fff}.swatch.blue{background:#3a6ea5}.swatch.teal{background:#008080}.settings-row button[aria-pressed="true"]{outline:2px solid #000080;outline-offset:2px}
+.system-dialog{padding:22px;background:var(--face);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px}.system-dialog label{display:flex;align-items:center;gap:15px}.system-dialog select{background:#fff;border:2px inset #ddd;padding:4px;min-width:170px}.power-screen{position:absolute;inset:0;background:#000080;color:#fff;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;font-size:18px;text-align:center;padding:20px}.power-screen h2{font-weight:normal}.power-screen .bevel-button{font-size:13px}
+@media(max-width:680px){.desktop-icons{left:3px;top:5px;gap:4px}.desktop-icon{width:76px;min-height:66px;font-size:11px}.desktop-icon svg{width:31px;height:31px}.window{left:4px!important;top:4px!important;width:calc(100% - 8px)!important;height:calc(100% - 8px)!important;min-width:0;resize:none}.explorer-side{display:none}.explorer-main{padding:15px}.window-controls .control{width:22px}.start-menu{width:min(300px,98vw)}.task-button{min-width:37px;max-width:95px;font-size:10px}.task-separator{display:none}.tray{min-width:70px;padding:2px 5px;gap:4px}.start-button{min-width:67px;padding:2px 4px}.versions{font-size:11px}.versions td,.versions th{padding:6px 3px}}@media(max-height:400px){.desktop-icon{min-height:60px}.explorer-main{padding:10px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <button class="hamburger-button" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="app-navigation" aria-expanded="false" title="Open menu">
-        <span class="hamburger-lines" aria-hidden="true"><span></span><span></span><span></span></span>
-      </button>
-      <a class="brand" href="index.html" aria-label="ProjectInsider home">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span class="brand-name">ProjectInsider<small>INSIDER PREVIEW</small></span>
-      </a>
-      
-      <a class="header-external" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
-    </div>
-  </header>
+<svg class="defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+<symbol id="i-win" viewBox="0 0 48 48"><path fill="#e65232" d="M4 7 23 4v18H4z"/><path fill="#71b633" d="m26 4 19-3v21H26z"/><path fill="#208bd7" d="M4 25h19v18L4 40z"/><path fill="#f1c833" d="M26 25h19v22l-19-4z"/></symbol>
+<symbol id="i-computer" viewBox="0 0 48 48"><rect x="4" y="5" width="34" height="29" rx="2" fill="#e0ded5" stroke="#333" stroke-width="2"/><rect x="8" y="9" width="26" height="19" fill="#16649c"/><path d="M9 12h24M11 16h19" stroke="#8fc6e0" stroke-width="2"/><path d="M17 34h11l2 6H15z" fill="#aaa" stroke="#333"/><rect x="12" y="40" width="27" height="4" fill="#dedbd4" stroke="#555"/><rect x="32" y="36" width="11" height="10" fill="#d2d0cb" stroke="#333"/></symbol>
+<symbol id="i-folder" viewBox="0 0 48 48"><path d="M4 13V8h17l5 5h18v28H4z" fill="#dabd5d" stroke="#594b26" stroke-width="2"/><path d="M5 17h39L40 41H5z" fill="#f3d06b" stroke="#7c6329" stroke-width="1.4"/><path d="M7 20h34" stroke="#fff2b2" stroke-width="2"/></symbol>
+<symbol id="i-ie" viewBox="0 0 48 48"><circle cx="25" cy="24" r="14" fill="#3e8cdb" stroke="#11518d" stroke-width="2"/><path d="M11 24h28M25 10c-12 7-12 23 0 28M25 10c12 7 12 23 0 28" fill="none" stroke="#cce9ff" stroke-width="2"/><path d="M5 30c1 10 38 8 39-8" fill="none" stroke="#ebbd3a" stroke-width="5"/><path d="M41 17 46 22 40 24" fill="#ebbd3a"/></symbol>
+<symbol id="i-bin" viewBox="0 0 48 48"><path d="M13 13h23l-3 30H16z" fill="#d8e8f4" stroke="#456a8c" stroke-width="2"/><path d="M9 10h30v5H9zM19 6h10v4H19" fill="#bbc7cf" stroke="#456a8c" stroke-width="2"/><path d="M20 18v20m7-20v20" stroke="#8bb9d5" stroke-width="2"/></symbol>
+<symbol id="i-project" viewBox="0 0 48 48"><rect x="6" y="7" width="35" height="35" fill="#dedede" stroke="#222" stroke-width="2"/><rect x="9" y="10" width="29" height="8" fill="#000080"/><path d="M11 22h24M11 26h24M11 30h18M11 34h22" stroke="#777" stroke-width="2"/><rect x="28" y="30" width="15" height="15" fill="#fff" stroke="#222"/><path d="m32 38 4 3 5-8" stroke="#008080" stroke-width="2" fill="none"/></symbol>
+<symbol id="i-store" viewBox="0 0 48 48"><rect x="5" y="16" width="38" height="28" fill="#1983cc" stroke="#15395c" stroke-width="2"/><path d="M14 17V12a10 10 0 0 1 20 0v5" fill="none" stroke="#e4e4e4" stroke-width="4"/><path d="M11 25h11v11H11zM25 25h11v11H25z" fill="#fff" opacity=".9"/></symbol>
+<symbol id="i-note" viewBox="0 0 48 48"><path d="M9 3h30v42H9z" fill="#fff" stroke="#234477" stroke-width="2"/><path d="M14 12h21M14 18h21M14 24h21M14 30h21M14 36h12" stroke="#78a8cf" stroke-width="2"/><path d="M9 4h30v5H9" fill="#000080"/></symbol>
+<symbol id="i-gear" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="#a9a9a9" stroke="#444" stroke-width="3"/><path d="M24 6v36M6 24h36M11 11l26 26m0-26L11 37" stroke="#dedede" stroke-width="4"/><circle cx="24" cy="24" r="9" fill="#777" stroke="#444" stroke-width="2"/></symbol>
+</defs></svg>
+<a class="skip" href="#workarea">Skip to desktop windows</a>
+<div class="desktop" id="desktop" aria-label="Interactive Windows 2000-inspired desktop">
+<div class="desktop-icons" role="group" aria-label="Desktop shortcuts">
+<button type="button" class="desktop-icon" data-app="computer" title="Double-click to open My Computer"><svg><use href="#i-computer"/></svg><span>My Computer</span></button>
+<button type="button" class="desktop-icon" data-app="documents" title="Double-click to open My Documents"><svg><use href="#i-folder"/></svg><span>My Documents</span></button>
+<button type="button" class="desktop-icon" data-app="browser" title="Double-click to open Internet Explorer"><svg><use href="#i-ie"/></svg><span>Internet Explorer</span></button>
+<button type="button" class="desktop-icon" data-app="recycle" title="Double-click to open Recycle Bin"><svg><use href="#i-bin"/></svg><span>Recycle Bin</span></button>
+<button type="button" class="desktop-icon" data-app="project" title="Double-click to open ProjectInsider"><svg><use href="#i-project"/></svg><span>ProjectInsider</span></button>
+<button type="button" class="desktop-icon" data-app="metro" title="Double-click to open MetroStore"><svg><use href="#i-store"/></svg><span>MetroStore</span></button>
+</div>
+<main class="window-layer" id="workarea" aria-label="Open windows">
+<section class="window" id="win-project" data-app="project" data-title="ProjectInsider" style="top:9%;left:23%;width:710px;height:530px" aria-label="ProjectInsider window">
+<div class="titlebar"><svg class="titlebar-icon"><use href="#i-project"/></svg><span class="window-title">ProjectInsider</span><div class="window-controls"><button class="control" data-command="minimize" aria-label="Minimize ProjectInsider">_</button><button class="control" data-command="maximize" aria-label="Maximize ProjectInsider">□</button><button class="control close-control" data-command="close" aria-label="Close ProjectInsider">×</button></div></div>
+<div class="menubar"><button data-menucmd="file">File</button><button data-menucmd="edit">Edit</button><button data-menucmd="view">View</button><button data-menucmd="help">Help</button></div>
+<div class="toolbar"><button class="bevel-button" data-open="computer">◀ Back</button><span class="toolbar-label">Address</span><div class="address"><svg><use href="#i-folder"/></svg><span>C:\ProjectInsider</span></div><button class="bevel-button" data-open="metro">Go</button></div>
+<div class="win-body"><div class="explorer"><aside class="explorer-side"><div class="side-hero">ProjectInsider</div><div class="side-sub">Independent software project<br>Classic Windows inspiration<br>Official project: MetroStore</div><hr class="classic-rule"><div class="side-sub">Welcome to the ProjectInsider desktop.</div></aside><div class="explorer-main">
+<div class="hero-project"><svg><use href="#i-project"/></svg><div><span class="project-tag">PROJECTINSIDER</span><h1>Welcome to ProjectInsider</h1><p class="quiet">Classic Windows. New possibilities.</p></div></div>
+<hr class="classic-rule">
+<p>ProjectInsider is an independent enthusiast initiative inspired by the classic Windows Store experience, from Windows 8 to early Windows 10.</p>
+<div class="classic-panel"><h2>Our official project</h2><p><strong>MetroStore</strong> is our one and only official software project. It explores bringing back the classic Metro-style Store experience.</p><button class="bevel-button" data-open="metro">Open MetroStore &gt;</button></div>
+<h2>Explore</h2><div class="file-grid">
+<button class="file-tile" data-open="metro"><svg><use href="#i-store"/></svg><span>MetroStore</span><small>Official project</small></button>
+<button class="file-tile" data-open="documents"><svg><use href="#i-folder"/></svg><span>Documentation</span><small>About this site</small></button>
+<a class="file-tile" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer"><svg><use href="#i-ie"/></svg><span>GitHub</span><small>External link ↗</small></a>
+</div>
+<p class="quiet">This desktop is a website simulation inspired by Windows 2000, not a real operating system. ProjectInsider is not affiliated with Microsoft.</p>
+</div></div></div><div class="statusbar"><span>1 official project</span><span>My Computer\ProjectInsider</span></div></section>
+<section class="window" id="win-metro" data-app="metro" data-title="MetroStore" style="top:12%;left:29%;width:750px;height:570px" aria-label="MetroStore window" hidden>
+<div class="titlebar"><svg class="titlebar-icon"><use href="#i-store"/></svg><span class="window-title">MetroStore - ProjectInsider</span><div class="window-controls"><button class="control" data-command="minimize" aria-label="Minimize MetroStore">_</button><button class="control" data-command="maximize" aria-label="Maximize MetroStore">□</button><button class="control close-control" data-command="close" aria-label="Close MetroStore">×</button></div></div>
+<div class="menubar"><button data-menucmd="file">File</button><button data-menucmd="view">View</button><button data-menucmd="help">Help</button></div>
+<div class="toolbar"><button class="bevel-button" data-open="project">◀ Back</button><span class="toolbar-label">Address</span><div class="address"><svg><use href="#i-store"/></svg><span>C:\ProjectInsider\MetroStore</span></div></div>
+<div class="win-body"><div class="explorer"><aside class="explorer-side"><div class="side-hero">MetroStore</div><div class="side-sub">Project type: Windows Store revival<br>Official ProjectInsider software<br>Status: In development</div><hr class="classic-rule"><div class="side-sub">Windows 8<br>Windows 8.1<br>Windows 10 early builds</div></aside><div class="explorer-main">
+<div class="hero-project"><svg><use href="#i-store"/></svg><div><span class="project-tag">OFFICIAL SOFTWARE</span><h1>MetroStore</h1><p class="quiet">The classic Microsoft Store spirit, reimagined.</p></div></div>
+<hr class="classic-rule">
+<p>MetroStore is a Windows Store-inspired app experience for fans of classic Windows. Its design is modeled around the Metro interface.</p>
+<h2>Planned editions</h2><table class="versions"><thead><tr><th>Edition</th><th>Platform</th><th>Status</th></tr></thead><tbody><tr><td>MetroStore 1.0</td><td>Windows 8</td><td>Planned</td></tr><tr><td>MetroStore 2.0</td><td>Windows 8.1</td><td>Planned</td></tr><tr><td>MetroStore 2.5</td><td>Windows 10 Beta</td><td>Planned</td></tr><tr><td>MetroStore 3.0</td><td>Windows 10 RTM</td><td>Planned</td></tr></tbody></table>
+<div class="classic-panel"><strong>Download information</strong><p>No installers are published on this website yet. The MetroStore API repository can be viewed on GitHub; it is not an application installer.</p><a class="bevel-button" style="display:inline-block;text-decoration:none;color:#000" href="https://github.com/ProjectInsider/MetroStore-API" target="_blank" rel="noopener noreferrer">View MetroStore API on GitHub ↗</a></div>
+<h2>Interface preview</h2><div class="screenshot-strip"><img loading="lazy" alt="MetroStore interface preview" src="assets/screenshot-store-1.jpg"><img loading="lazy" alt="Additional MetroStore interface preview" src="assets/screenshot-store-2.jpg"></div>
+<p class="quiet" style="margin-top:14px">Images are interface previews. Features and availability may change during development.</p>
+</div></div></div><div class="statusbar"><span>MetroStore - Official project</span><span>Preview</span></div></section>
+<section class="window" id="win-computer" data-app="computer" data-title="My Computer" style="top:9%;left:14%;width:630px;height:435px" aria-label="My Computer window" hidden>
+<div class="titlebar"><svg class="titlebar-icon"><use href="#i-computer"/></svg><span class="window-title">My Computer</span><div class="window-controls"><button class="control" data-command="minimize" aria-label="Minimize My Computer">_</button><button class="control" data-command="maximize" aria-label="Maximize My Computer">□</button><button class="control close-control" data-command="close" aria-label="Close My Computer">×</button></div></div><div class="menubar"><button data-menucmd="file">File</button><button data-menucmd="view">View</button><button data-menucmd="help">Help</button></div><div class="toolbar"><span class="toolbar-label">Address</span><div class="address"><svg><use href="#i-computer"/></svg><span>My Computer</span></div></div>
+<div class="win-body"><div class="explorer"><aside class="explorer-side"><div class="side-hero">My Computer</div><div class="side-sub">Explore the simulated computer.<br>Only the files shown here are part of the website.</div></aside><div class="explorer-main"><h1>My Computer</h1><div class="file-grid"><button class="file-tile" data-open="project"><svg><use href="#i-folder"/></svg><span>ProjectInsider (C:)</span></button><button class="file-tile" data-open="documents"><svg><use href="#i-folder"/></svg><span>My Documents</span></button><button class="file-tile" data-open="settings"><svg><use href="#i-gear"/></svg><span>Control Panel</span></button></div><p class="quiet">This is a demonstration desktop; it cannot access your real computer files.</p></div></div></div><div class="statusbar"><span>3 objects</span></div></section>
+<section class="window" id="win-documents" data-app="documents" data-title="My Documents" style="top:16%;left:25%;width:570px;height:400px" aria-label="My Documents window" hidden>
+<div class="titlebar"><svg class="titlebar-icon"><use href="#i-folder"/></svg><span class="window-title">My Documents</span><div class="window-controls"><button class="control" data-command="minimize" aria-label="Minimize My Documents">_</button><button class="control" data-command="maximize" aria-label="Maximize My Documents">□</button><button class="control close-control" data-command="close" aria-label="Close My Documents">×</button></div></div><div class="menubar"><button data-menucmd="file">File</button><button data-menucmd="view">View</button><button data-menucmd="help">Help</button></div><div class="toolbar"><span class="toolbar-label">Address</span><div class="address"><svg><use href="#i-folder"/></svg><span>C:\My Documents</span></div></div><div class="win-body"><div class="explorer"><aside class="explorer-side"><div class="side-hero">My Documents</div><div class="side-sub">Project-related documentation and shortcuts.</div></aside><div class="explorer-main"><h1>My Documents</h1><div class="file-grid"><button class="file-tile" data-open="notes"><svg><use href="#i-note"/></svg><span>README.txt</span><small>Text Document</small></button><button class="file-tile" data-open="project"><svg><use href="#i-project"/></svg><span>ProjectInsider</span></button><button class="file-tile" data-open="metro"><svg><use href="#i-store"/></svg><span>MetroStore</span></button></div></div></div></div><div class="statusbar"><span>3 objects</span></div></section>
+<section class="window" id="win-browser" data-app="browser" data-title="Internet Explorer" style="top:16%;left:16%;width:645px;height:450px" aria-label="Internet Explorer window" hidden><div class="titlebar"><svg class="titlebar-icon"><use href="#i-ie"/></svg><span class="window-title">Microsoft Internet Explorer</span><div class="window-controls"><button class="control" data-command="minimize" aria-label="Minimize Internet Explorer">_</button><button class="control" data-command="maximize" aria-label="Maximize Internet Explorer">□</button><button class="control close-control" data-command="close" aria-label="Close Internet Explorer">×</button></div></div><div class="menubar"><button data-menucmd="file">File</button><button data-menucmd="view">View</button><button data-menucmd="help">Help</button></div><div class="toolbar"><button class="bevel-button" data-open="project">Home</button><span class="toolbar-label">Address</span><div class="address"><svg><use href="#i-ie"/></svg><span>https://projectinsider.github.io</span></div></div><div class="win-body"><div class="fake-browser"><div class="browser-page"><h1>Welcome to ProjectInsider!</h1><hr><p>Thanks for visiting our Windows 2000-inspired website. Discover MetroStore, our official software project, or follow development on GitHub.</p><button class="bevel-button" data-open="metro">Explore MetroStore</button><a class="browser-link" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">ProjectInsider on GitHub ↗</a><a class="browser-link" href="https://github.com/ProjectInsider/MetroStore-API" target="_blank" rel="noopener noreferrer">MetroStore API repository ↗</a><p class="quiet">The browser is a simulated interface; external links open in your actual browser.</p></div></div></div><div class="statusbar"><span>Done</span><span>Internet</span></div></section>
+<section class="window" id="win-recycle" data-app="recycle" data-title="Recycle Bin" style="top:19%;left:35%;width:470px;height:330px" aria-label="Recycle Bin window" hidden><div class="titlebar"><svg class="titlebar-icon"><use href="#i-bin"/></svg><span class="window-title">Recycle Bin</span><div class="window-controls"><button class="control" data-command="minimize" aria-label="Minimize Recycle Bin">_</button><button class="control" data-command="maximize" aria-label="Maximize Recycle Bin">□</button><button class="control close-control" data-command="close" aria-label="Close Recycle Bin">×</button></div></div><div class="menubar"><button data-menucmd="file">File</button><button data-menucmd="view">View</button><button data-menucmd="help">Help</button></div><div class="toolbar"><span class="toolbar-label">Address</span><div class="address"><svg><use href="#i-bin"/></svg><span>Recycle Bin</span></div></div><div class="win-body"><div class="explorer-main"><h1>Recycle Bin</h1><p>Recycle Bin is empty.</p><p class="quiet">This simulated Recycle Bin does not manage any files on your device.</p></div></div><div class="statusbar"><span>0 objects</span></div></section>
+<section class="window" id="win-notes" data-app="notes" data-title="README - Notepad" style="top:23%;left:29%;width:545px;height:370px" aria-label="Notepad window" hidden><div class="titlebar"><svg class="titlebar-icon"><use href="#i-note"/></svg><span class="window-title">README - Notepad</span><div class="window-controls"><button class="control" data-command="minimize" aria-label="Minimize Notepad">_</button><button class="control" data-command="maximize" aria-label="Maximize Notepad">□</button><button class="control close-control" data-command="close" aria-label="Close Notepad">×</button></div></div><div class="menubar"><button data-menucmd="file">File</button><button data-menucmd="edit">Edit</button><button data-menucmd="help">Help</button></div><div class="win-body"><textarea class="notepad" spellcheck="false" aria-label="ProjectInsider README">PROJECTINSIDER
+=============
+Welcome to our Windows 2000 desktop experience!
 
-  <button class="drawer-scrim" id="drawer-scrim" type="button" aria-label="Close navigation menu" tabindex="-1" hidden></button>
-  <aside class="nav-drawer" id="app-navigation" aria-label="Navigation menu" aria-hidden="true" inert>
-    <div class="drawer-header">
-      <button class="drawer-close" id="drawer-close" type="button" aria-label="Close navigation menu" title="Close menu">×</button>
-      <span class="drawer-header-title">ProjectInsider</span>
-    </div>
-    <div class="drawer-app-title">INSIDER PREVIEW</div>
-    <nav class="drawer-nav" aria-label="Site pages">
-        <a class="drawer-link" href="index.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 3l9 7v11h-7v-7h-4v7H3z"/></svg><span>Home</span></a>
-        <a class="drawer-link" href="main.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 18v3h16v-3"/></svg><span>Downloads</span></a>
-        <a class="drawer-link" href="about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></svg><span>About</span></a>
-    </nav>
-    <div class="drawer-section-label">PROJECT</div>
-    <nav class="drawer-nav" aria-label="External links">
-      <a class="drawer-link" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1-4-2-6-3m12 5v-3a3 3 0 0 0-.8-2.3c2.7-.3 5.3-1.3 5.3-5.9a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.4-.4-3.4 1.2a11 11 0 0 0-6.4 0C6.3 3 4.9 3.4 4.9 3.4a4.2 4.2 0 0 0-.1 3.2 4.6 4.6 0 0 0-1.3 3.2c0 4.6 2.6 5.6 5.3 5.9A3 3 0 0 0 8 18v3"/></svg><span>GitHub</span><span class="drawer-external-arrow" aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="drawer-bottom"><span class="drawer-bottom-mark" aria-hidden="true">⊞</span><div>ProjectInsider<br><small>Classic Windows. New possibilities.</small></div></div>
-  </aside>
-  <main id="main-content">
+Official software:
+- MetroStore
 
-    <section class="hero-home page-container">
-      <div class="hero-copy fade-up">
-        <p class="eyebrow">ProjectInsider / Beta</p>
-        <h1>Classic Windows.<br><span>New possibilities.</span></h1>
-        <p class="lead">Welcome to ProjectInsider. A home for projects that bring the spirit of Windows 8 and early Windows 10 back to life — starting with MetroStore.</p>
-        <div class="button-row">
-          <a class="button-primary" href="main.html">Explore MetroStore <span aria-hidden="true">→</span></a>
-          <a class="button-link" href="about.html">About the project <span aria-hidden="true">→</span></a>
-        </div>
-        <p class="microcopy">Made for the community. Inspired by the Windows experience we love.</p>
-      </div>
-      <div class="hero-visual fade-up" aria-label="MetroStore interface concept">
-        <div class="visual-top"><span>PROJECTINSIDER / METROSTORE</span><span class="visual-dots"><i></i><i></i><i></i></span></div>
-        <div class="visual-heading">Store</div>
-        <p class="visual-copy">Discover apps for your Windows.</p>
-        <div class="visual-feature">
-          <div><strong>MetroStore</strong><span>Experience the classic Store again</span></div>
-          <span class="windows-mark windows-mark--white visual-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-        </div>
-        <div class="visual-mini-grid"><div>Apps</div><div>Games</div><div>Library</div></div>
-      </div>
-    </section>
+MetroStore is our Windows Store-inspired revival project.
 
-    <aside class="preview-strip" aria-label="Website status">
-      <div class="page-container">
-        <p><b>Preview website.</b> ProjectInsider is under development, and downloads are not available yet.</p>
-        <a href="about.html">Learn more <span aria-hidden="true">→</span></a>
-      </div>
-    </aside>
+Visit: https://github.com/ProjectInsider
+API repository: https://github.com/ProjectInsider/MetroStore-API
 
-    <section class="section page-container" aria-labelledby="discover-title">
-      <div class="section-head">
-        <div><p class="eyebrow">Discover</p><h2 id="discover-title">Explore ProjectInsider</h2><p class="section-description">A clean home for our Windows-inspired software projects.</p></div>
-      </div>
-      <div class="feature-grid">
-        <a class="feature-card feature-card--blue" href="main.html">
-          <span class="feature-symbol" aria-hidden="true">⊞</span>
-          <h3>MetroStore</h3>
-          <p>Explore planned Store editions for classic Windows releases.</p>
-          <span class="card-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="feature-card" href="about.html">
-          <span class="feature-symbol" aria-hidden="true">i</span>
-          <h3>Our story</h3>
-          <p>Find out why ProjectInsider is bringing classic Microsoft design back.</p>
-          <span class="card-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="feature-card" href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">
-          <span class="feature-symbol" aria-hidden="true">&lt;/&gt;</span>
-          <h3>On GitHub</h3>
-          <p>Visit the ProjectInsider GitHub profile and follow our development.</p>
-          <span class="card-arrow" aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="section section--soft" aria-labelledby="editions-title">
-      <div class="page-container">
-        <div class="section-head">
-          <div><p class="eyebrow">MetroStore</p><h2 id="editions-title">One experience. Four eras.</h2><p class="section-description">Each planned release is tailored to a different generation of Windows.</p></div>
-          <a class="inline-arrow" href="main.html">All downloads <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="version-preview-grid">
-          <a class="version-preview" href="main.html#metrostore-1"><span><span class="tiny-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><strong>MetroStore 1.0</strong><small>Windows 8 · Coming soon</small></a>
-          <a class="version-preview" href="main.html#metrostore-2"><span><span class="tiny-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><strong>MetroStore 2.0</strong><small>Windows 8.1 · Coming soon</small></a>
-          <a class="version-preview" href="main.html#metrostore-25"><span><span class="tiny-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><strong>MetroStore 2.5</strong><small>Windows 10 Beta · Coming soon</small></a>
-          <a class="version-preview" href="main.html#metrostore-3"><span><span class="tiny-window" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><strong>MetroStore 3.0</strong><small>Windows 10 RTM · Coming soon</small></a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-      <span>© 2026 ProjectInsider. An independent Windows enthusiast project.</span>
-      <span>Inspired by classic Windows and the Universal Windows Platform. <a href="https://github.com/ProjectInsider" target="_blank" rel="noopener noreferrer">GitHub ↗</a></span>
-    </div>
-  </footer>
+This is an interactive website, not an operating system.
+It is an independent fan project and is not affiliated with Microsoft.</textarea></div><div class="statusbar"><span>README.txt</span></div></section>
+<section class="window" id="win-settings" data-app="settings" data-title="Display Properties" style="top:23%;left:30%;width:465px;height:355px" aria-label="Display Properties window" hidden><div class="titlebar"><svg class="titlebar-icon"><use href="#i-gear"/></svg><span class="window-title">Display Properties</span><div class="window-controls"><button class="control" data-command="minimize" aria-label="Minimize Display Properties">_</button><button class="control" data-command="maximize" aria-label="Maximize Display Properties">□</button><button class="control close-control" data-command="close" aria-label="Close Display Properties">×</button></div></div><div class="win-body" style="background:var(--face)"><div class="explorer-main"><h2>Background</h2><p>Choose your desktop color:</p><div class="settings-row"><button class="bevel-button" data-wall="blue" aria-pressed="true"><span class="swatch blue" style="display:inline-block;vertical-align:middle"></span> Windows 2000 Blue</button><button class="bevel-button" data-wall="teal" aria-pressed="false"><span class="swatch teal" style="display:inline-block;vertical-align:middle"></span> Classic Teal</button></div><label><input id="wall-gradient" type="checkbox"> Use subtle gradient</label><div class="launch"><button class="bevel-button" data-command="close">OK</button></div></div></div></section>
+<section class="window" id="win-run" data-app="run" data-title="Run" style="top:30%;left:35%;width:400px;height:230px" aria-label="Run window" hidden><div class="titlebar"><svg class="titlebar-icon"><use href="#i-win"/></svg><span class="window-title">Run</span><div class="window-controls"><button class="control close-control" data-command="close" aria-label="Close Run">×</button></div></div><div class="win-body" style="background:var(--face);border:0"><div class="explorer-main"><p>Type the name of a program, folder, or document to open.</p><label for="run-input">Open:</label> <input id="run-input" type="text" autocomplete="off" style="padding:5px;border:2px inset #bbb;max-width:100%;width:250px" placeholder="metrostore"><div class="launch"><button class="bevel-button" id="run-go">OK</button><button class="bevel-button" data-command="close">Cancel</button></div><p id="run-error" class="quiet" role="status"></p></div></div></section>
+<section class="window" id="win-power" data-app="power" data-title="Shut Down Windows" style="top:28%;left:34%;width:425px;height:260px" aria-label="Shut Down Windows window" hidden><div class="titlebar"><svg class="titlebar-icon"><use href="#i-win"/></svg><span class="window-title">Shut Down Windows</span><div class="window-controls"><button class="control close-control" data-command="close" aria-label="Close Shut Down">×</button></div></div><div class="win-body" style="background:var(--face);border:0"><div class="system-dialog"><label>What do you want the computer to do?<select id="power-action"><option value="shutdown">Shut down</option><option value="restart">Restart</option><option value="logoff">Log off</option></select></label><div class="launch"><button id="power-ok" class="bevel-button">OK</button><button class="bevel-button" data-command="close">Cancel</button></div></div></div></section>
+</main>
+<div class="start-menu" id="start-menu" role="menu" aria-label="Start menu" hidden>
+<div class="start-side"><span>Windows <small>2000</small></span></div>
+<div class="start-items"><div class="start-heading">ProjectInsider Desktop</div>
+<button class="start-item" role="menuitem" data-open="project"><svg><use href="#i-project"/></svg><span>ProjectInsider</span></button>
+<button class="start-item" role="menuitem" data-open="metro"><svg><use href="#i-store"/></svg><span>MetroStore</span></button><div class="start-divider"></div>
+<button class="start-item" role="menuitem" data-open="computer"><svg><use href="#i-computer"/></svg><span>My Computer</span></button>
+<button class="start-item" role="menuitem" data-open="documents"><svg><use href="#i-folder"/></svg><span>Documents</span></button>
+<button class="start-item" role="menuitem" data-open="browser"><svg><use href="#i-ie"/></svg><span>Internet</span></button>
+<button class="start-item" role="menuitem" data-open="notes"><svg><use href="#i-note"/></svg><span>Notepad</span></button>
+<button class="start-item" role="menuitem" data-open="settings"><svg><use href="#i-gear"/></svg><span>Settings</span></button><div class="start-divider"></div>
+<button class="start-item" role="menuitem" data-open="run"><svg><use href="#i-win"/></svg><span>Run...</span></button>
+<button class="start-item" role="menuitem" data-open="power"><svg><use href="#i-win"/></svg><span>Shut Down...</span></button></div></div>
+<div id="context-menu" class="context-menu" hidden><button data-context="refresh">Refresh</button><button data-context="arrange">Arrange Icons</button><button data-open="settings">Properties</button></div>
+<div class="taskbar" role="toolbar" aria-label="Windows taskbar"><button class="bevel-button start-button" id="start-button" aria-expanded="false" aria-controls="start-menu"><svg><use href="#i-win"/></svg>Start</button><div class="task-separator"></div><div id="task-apps" class="task-apps" aria-label="Open programs"></div><div class="tray"><button id="tray-info" title="About this desktop" aria-label="About the desktop">ⓘ</button><time class="tray-clock" id="tray-clock"></time></div></div>
+<div class="power-screen" id="power-screen" hidden><svg width="67" height="67" style="opacity:.9"><use href="#i-win"/></svg><h2 id="power-message">It is now safe to turn off your computer.</h2><p style="font-size:13px">This is only a website simulation.</p><button id="restart-button" class="bevel-button">Return to Windows 2000</button></div>
+</div>
+<script>
+(function(){
+"use strict";
+var desktop=document.getElementById("desktop");
+var layer=document.getElementById("workarea");
+var start=document.getElementById("start-menu");
+var startButton=document.getElementById("start-button");
+var context=document.getElementById("context-menu");
+var tasks=document.getElementById("task-apps");
+var all=Array.prototype.slice.call(document.querySelectorAll(".window"));
+var stack=10;
+var focused=null;
+var iconNames={computer:"i-computer",documents:"i-folder",browser:"i-ie",recycle:"i-bin",project:"i-project",metro:"i-store",notes:"i-note",settings:"i-gear",run:"i-win",power:"i-win"};
+function appWindow(id){return document.getElementById("win-"+id)}
+function visible(w){return w&&!w.hidden&&!w.classList.contains("minimized")}
+function closeMenus(){start.hidden=true;startButton.classList.remove("active");startButton.setAttribute("aria-expanded","false");context.hidden=true}
+function taskUpdate(){
+tasks.innerHTML="";
+all.filter(function(w){return !w.hidden}).forEach(function(w){
+var id=w.dataset.app,button=document.createElement("button"),svg=document.createElementNS("http://www.w3.org/2000/svg","svg"),use=document.createElementNS("http://www.w3.org/2000/svg","use");
+button.className="bevel-button task-button"+(focused===w&&!w.classList.contains("minimized")?" active":"");
+button.setAttribute("aria-label",w.classList.contains("minimized")?"Restore "+w.dataset.title:"Show "+w.dataset.title);
+use.setAttribute("href","#"+iconNames[id]);svg.appendChild(use);
+var txt=document.createElement("span");txt.textContent=w.dataset.title;
+button.appendChild(svg);button.appendChild(txt);
+button.addEventListener("click",function(){if(focused===w&&visible(w)){w.classList.add("minimized");focused=null;activateTop()}else focusWindow(w,true)});
+tasks.appendChild(button);
+});
+}
+function activateTop(){
+var remaining=all.filter(visible).sort(function(a,b){return Number(b.style.zIndex||0)-Number(a.style.zIndex||0)});
+if(remaining.length){focusWindow(remaining[0],false)}else{focused=null;all.forEach(function(w){w.classList.remove("active")});taskUpdate()}
+}
+function focusWindow(w,restore){if(!w)return;if(restore){w.hidden=false;w.classList.remove("minimized")}
+focused=w;w.style.zIndex=++stack;all.forEach(function(x){x.classList.toggle("active",x===w)});taskUpdate()}
+function openApp(id){var w=appWindow(id);if(!w)return;closeMenus();w.hidden=false;w.classList.remove("minimized");focusWindow(w,true);if(id==="run"){var inp=document.getElementById("run-input");document.getElementById("run-error").textContent="";setTimeout(function(){inp.focus()},0)}}
+function closeWindow(w){if(!w)return;w.hidden=true;w.classList.remove("minimized","active");w.classList.remove("maximized");if(focused===w)focused=null;activateTop()}
+function minimizeWindow(w){w.classList.add("minimized");w.classList.remove("active");if(focused===w)focused=null;activateTop()}
+function maximizeWindow(w){w.classList.toggle("maximized");focusWindow(w,false)}
+document.addEventListener("click",function(e){
+var command=e.target.closest("[data-command]");
+if(command){var w=command.closest(".window");var type=command.dataset.command;if(type==="close")closeWindow(w);if(type==="minimize")minimizeWindow(w);if(type==="maximize")maximizeWindow(w);return}
+var opener=e.target.closest("[data-open]");if(opener){openApp(opener.dataset.open);return}
+if(!e.target.closest("#start-menu,#start-button"))closeMenus();
+});
+document.querySelectorAll(".window").forEach(function(w){
+w.addEventListener("pointerdown",function(){if(!w.hidden)focusWindow(w,false)});
+var bar=w.querySelector(".titlebar");
+bar.addEventListener("dblclick",function(e){if(!e.target.closest("button"))maximizeWindow(w)});
+bar.addEventListener("pointerdown",function(e){
+if(e.button!==0||e.target.closest("button")||w.classList.contains("maximized")||window.matchMedia("(max-width:680px)").matches)return;
+e.preventDefault();focusWindow(w,false);
+var startX=e.clientX,startY=e.clientY,initX=w.offsetLeft,initY=w.offsetTop;
+function move(ev){var x=Math.max(0,Math.min(layer.clientWidth-70,initX+ev.clientX-startX));var y=Math.max(0,Math.min(layer.clientHeight-26,initY+ev.clientY-startY));w.style.left=x+"px";w.style.top=y+"px"}
+function up(){document.removeEventListener("pointermove",move);document.removeEventListener("pointerup",up);document.removeEventListener("pointercancel",up)}
+document.addEventListener("pointermove",move);document.addEventListener("pointerup",up);document.addEventListener("pointercancel",up);
+});
+});
+startButton.addEventListener("click",function(e){e.stopPropagation();var show=start.hidden;closeMenus();start.hidden=!show;startButton.classList.toggle("active",show);startButton.setAttribute("aria-expanded",String(show))});
+var selected=null;
+document.querySelectorAll(".desktop-icon").forEach(function(icon){
+icon.addEventListener("click",function(){if(selected)selected.classList.remove("selected");selected=icon;icon.classList.add("selected");if(window.matchMedia("(pointer:coarse)").matches)openApp(icon.dataset.app)});
+icon.addEventListener("dblclick",function(){openApp(icon.dataset.app)});
+icon.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openApp(icon.dataset.app)}});
+});
+desktop.addEventListener("pointerdown",function(e){if(e.target===desktop||e.target===layer||e.target.classList.contains("desktop-icons")){if(selected)selected.classList.remove("selected");selected=null}});
+desktop.addEventListener("contextmenu",function(e){
+if(e.target.closest(".window,.taskbar,.start-menu,.desktop-icon,.power-screen"))return;
+e.preventDefault();closeMenus();context.hidden=false;context.style.left=Math.min(e.clientX,desktop.clientWidth-190)+"px";context.style.top=Math.min(e.clientY,desktop.clientHeight-155)+"px";
+});
+document.querySelectorAll("[data-context]").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.context==="arrange"){var group=document.querySelector(".desktop-icons");group.style.flexDirection=group.style.flexDirection==="row"?"column":"row";group.style.flexWrap="wrap"}if(b.dataset.context==="refresh")taskUpdate();closeMenus()})});
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape"){closeMenus();return}
+if(e.altKey&&e.key==="F4"){e.preventDefault();if(focused)closeWindow(focused)}
+if(e.key==="F5"){e.preventDefault();taskUpdate()}
+if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="r"){return}
+if(e.ctrlKey&&e.key==="Escape"){e.preventDefault();startButton.click()}
+});
+document.querySelectorAll("[data-menucmd]").forEach(function(b){b.addEventListener("click",function(){
+var cmd=b.dataset.menucmd,w=b.closest(".window");
+if(cmd==="help"){window.alert("ProjectInsider Windows 2000 Desktop\nAn interactive website showcasing MetroStore.\n\nDouble-click desktop icons, drag windows, and use the Start menu.");return}
+if(cmd==="file"){closeWindow(w);return}
+if(cmd==="view"){taskUpdate();return}
+if(cmd==="edit"){var t=w.querySelector("textarea");if(t){t.focus();t.select()}return}
+})});
+function executeRun(){var value=document.getElementById("run-input").value.trim().toLowerCase().replace(/\.exe$/,"");var map={metrostore:"metro",store:"metro",projectinsider:"project",explorer:"computer",computer:"computer",notepad:"notes",readme:"notes",control:"settings",settings:"settings",iexplore:"browser",browser:"browser",documents:"documents",recycle:"recycle",cmd:"notes"};if(map[value]){closeWindow(appWindow("run"));openApp(map[value])}else{document.getElementById("run-error").textContent="Windows cannot find '"+value+"'. Try MetroStore, ProjectInsider, notepad, or explorer."}}
+document.getElementById("run-go").addEventListener("click",executeRun);
+document.getElementById("run-input").addEventListener("keydown",function(e){if(e.key==="Enter")executeRun()});
+function wallSet(value){desktop.classList.toggle("alt-wall",value==="teal");document.querySelectorAll("[data-wall]").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.wall===value))});try{localStorage.setItem("pi-wall",value)}catch(e){}}
+document.querySelectorAll("[data-wall]").forEach(function(b){b.addEventListener("click",function(){wallSet(b.dataset.wall)})});
+document.getElementById("wall-gradient").addEventListener("change",function(e){desktop.classList.toggle("win-wall",e.target.checked);try{localStorage.setItem("pi-grad",e.target.checked?"1":"0")}catch(ex){}});
+try{wallSet(localStorage.getItem("pi-wall")==="teal"?"teal":"blue");var gr=localStorage.getItem("pi-grad")==="1";desktop.classList.toggle("win-wall",gr);document.getElementById("wall-gradient").checked=gr}catch(e){}
+document.getElementById("tray-info").addEventListener("click",function(){openApp("project")});
+function time(){var now=new Date();var el=document.getElementById("tray-clock");el.textContent=now.toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"});el.dateTime=now.toISOString();el.title=now.toLocaleDateString(undefined,{weekday:"long",day:"numeric",month:"long",year:"numeric"})}time();setInterval(time,30000);
+document.getElementById("power-ok").addEventListener("click",function(){closeWindow(appWindow("power"));var value=document.getElementById("power-action").value,screen=document.getElementById("power-screen");document.getElementById("power-message").textContent=value==="restart"?"Windows 2000 is restarting...":value==="logoff"?"You are now logged off.":"It is now safe to turn off your computer.";screen.hidden=false;closeMenus()});
+document.getElementById("restart-button").addEventListener("click",function(){document.getElementById("power-screen").hidden=true;openApp("project")});
+if(window.location.hash==="#metrostore")openApp("metro");else if(window.location.hash==="#about")openApp("project");else openApp("project");
+})();
+</script>
 </body>
 </html>
